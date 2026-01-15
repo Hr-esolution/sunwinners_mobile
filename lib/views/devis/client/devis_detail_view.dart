@@ -7,21 +7,29 @@ import 'package:sunwinners/data/models/devis_model.dart';
 import 'package:sunwinners/data/models/devis_response_model.dart';
 import 'package:sunwinners/widgets/sunwinners_app_bar.dart';
 
-class ClientDevisDetailPage extends StatelessWidget {
+class ClientDevisDetailPage extends StatefulWidget {
   final int devisId;
 
   const ClientDevisDetailPage({super.key, required this.devisId});
 
   @override
-  Widget build(BuildContext context) {
-    final DevisController controller = Get.find<DevisController>();
+  State<ClientDevisDetailPage> createState() => _ClientDevisDetailPageState();
+}
 
-    if (controller.currentDevis == null ||
-        controller.currentDevis?.id != devisId) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        controller.loadDevisDetail(devisId);
-      });
-    }
+class _ClientDevisDetailPageState extends State<ClientDevisDetailPage> {
+  late final DevisController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = Get.find<DevisController>();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.loadDevisDetail(widget.devisId);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
 
     return Scaffold(
       backgroundColor: const Color(0xFF0f1419),
@@ -42,7 +50,7 @@ class ClientDevisDetailPage extends StatelessWidget {
         ),
         child: GetBuilder<DevisController>(
           builder: (_) {
-            if (controller.isLoading && controller.currentDevis == null) {
+            if (_.isLoading && _.currentDevis == null) {
               return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -84,7 +92,7 @@ class ClientDevisDetailPage extends StatelessWidget {
               );
             }
 
-            final DevisModel? devis = controller.currentDevis;
+            final DevisModel? devis = _.currentDevis;
             if (devis == null) {
               return Center(
                 child: Column(
@@ -292,7 +300,7 @@ class ClientDevisDetailPage extends StatelessWidget {
                         .toList(),
                   ],
                   const SizedBox(height: 24),
-                  _clientActions(controller, devis),
+                  _clientActions(_, devis),
                   const SizedBox(height: 20),
                 ],
               ),
