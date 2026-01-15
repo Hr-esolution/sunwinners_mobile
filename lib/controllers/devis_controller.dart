@@ -337,6 +337,8 @@ class DevisController extends GetxController {
       print('🔍 loadDevisDetail: Exception occurred: $e');
       Get.snackbar('Erreur', AppConstants.serverErrorMessage);
     } finally {
+      // Only set loading to false and update after everything is done
+      // This ensures the UI updates even after responses are loaded
       _isLoading.value = false;
       update();
     }

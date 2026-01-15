@@ -1,83 +1,23 @@
 ```
-# Compiled and build artifacts
-*.pyc
-__pycache__/
-*.o
-*.obj
-*.class
-*.exe
-*.dll
-*.so
-*.a
-*.out
+# Build artifacts
+*.dart_tool/
+*.build/
+build/
 
 # Dependencies
-node_modules/
-venv/
-.venv/
-.env
-.env.local
-.env.*
-
-# Build outputs
-dist/
-build/
-target/
-*.jar
-*.war
-*.zip
-*.tar.gz
+pubspec.lock
 
 # Logs and temp files
 *.log
 *.tmp
-*.swp
-*.swo
+
+# Environment
+.env
+.env.local
+*.env.*
 
 # Editors
 .vscode/
 .idea/
-*.iml
-*.ipr
-*.iws
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# Python specific
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Dart/Flutter specific
-.dart_tool/
-.packages
-.pub-cache/
-pubspec.lock
-build/
-
-# Original rules preserved
-*.log
+*.swp
 ```

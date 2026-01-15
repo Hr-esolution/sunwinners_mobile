@@ -139,11 +139,11 @@ class _ClientDevisDetailPageState extends State<ClientDevisDetailPage> {
                   ],
                   // 🔹 Section "Réponses" toujours visible
                   const SizedBox(height: 24),
-                  _responsesSectionPlaceholder(devis),
-                  if (devis.responses != null &&
-                      devis.responses!.isNotEmpty) ...[
+                  _responsesSectionPlaceholder(_),
+                  if (_.currentDevis!.responses != null &&
+                      _.currentDevis!.responses!.isNotEmpty) ...[
                     const SizedBox(height: 12),
-                    ...devis.responses!
+                    ..._.currentDevis!.responses!
                         .map(
                           (response) => Padding(
                             padding: const EdgeInsets.only(bottom: 12),
@@ -314,7 +314,7 @@ class _ClientDevisDetailPageState extends State<ClientDevisDetailPage> {
   // =========================
   // 📬 ESPACE RÉPONSES (toujours visible)
   // =========================
-  Widget _responsesSectionPlaceholder(DevisModel devis) {
+  Widget _responsesSectionPlaceholder(_) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -327,75 +327,80 @@ class _ClientDevisDetailPageState extends State<ClientDevisDetailPage> {
           ),
         ),
         const SizedBox(height: 12),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-            child: Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [
-                    Color.fromRGBO(255, 255, 255, 0.06),
-                    Color.fromRGBO(255, 255, 255, 0.02),
-                  ],
-                ),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: const Color(0xFFffd60a).withValues(alpha: 0.2),
-                  width: 1.5,
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: const Color(
-                            0xFFffd60a,
-                          ).withValues(alpha: 0.15),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Icon(
-                          Icons.hourglass_empty,
-                          color: const Color(0xFFffd60a),
-                          size: 20,
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'En attente de réponses',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 14,
-                                color: Colors.white,
-                              ),
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              'Les techniciens vont vous répondre sous peu.',
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: Colors.white.withValues(alpha: 0.7),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+        if (_.currentDevis?.responses != null && 
+            _.currentDevis!.responses!.isNotEmpty)
+          // Don't show the "En attente" card when responses exist
+          const SizedBox.shrink()
+        else
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [
+                      Color.fromRGBO(255, 255, 255, 0.06),
+                      Color.fromRGBO(255, 255, 255, 0.02),
                     ],
                   ),
-                ],
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: const Color(0xFFffd60a).withValues(alpha: 0.2),
+                    width: 1.5,
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: const Color(
+                              0xFFffd60a,
+                            ).withValues(alpha: 0.15),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(
+                            Icons.hourglass_empty,
+                            color: const Color(0xFFffd60a),
+                            size: 20,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'En attente de réponses',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                'Les techniciens vont vous répondre sous peu.',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.white.withValues(alpha: 0.7),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
       ],
     );
   }
