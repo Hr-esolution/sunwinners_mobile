@@ -1,13 +1,9 @@
 import 'dart:io';
-import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sunwinners/core/constants/app_constants.dart';
 import '../../controllers/auth_controller.dart';
 import '../../controllers/devis_controller.dart';
 import '../../widgets/sunwinners_app_bar.dart';
@@ -103,7 +99,9 @@ class _DevisCreateViewState extends State<DevisCreateView> {
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFF00ff88).withOpacity(0.3),
+                            color: const Color(
+                              0xFF00ff88,
+                            ).withValues(alpha: 0.3),
                             blurRadius: 12,
                             offset: const Offset(0, 4),
                           ),
@@ -126,7 +124,9 @@ class _DevisCreateViewState extends State<DevisCreateView> {
                             'Veuillez remplir les informations de votre projet',
                             style: TextStyle(
                               fontSize: 13,
-                              color: const Color(0xFF0f1419).withOpacity(0.8),
+                              color: const Color(
+                                0xFF0f1419,
+                              ).withValues(alpha: 0.8),
                             ),
                           ),
                         ],
@@ -159,7 +159,7 @@ class _DevisCreateViewState extends State<DevisCreateView> {
                             if (states.contains(WidgetState.selected)) {
                               return const Color(0xFFffd60a);
                             }
-                            return Colors.white.withOpacity(0.05);
+                            return Colors.white.withValues(alpha: 0.05);
                           },
                         ),
                         foregroundColor: WidgetStateProperty.resolveWith<Color>(
@@ -172,7 +172,9 @@ class _DevisCreateViewState extends State<DevisCreateView> {
                         ),
                         side: WidgetStateProperty.all(
                           BorderSide(
-                            color: const Color(0xFFffd60a).withOpacity(0.3),
+                            color: const Color(
+                              0xFFffd60a,
+                            ).withValues(alpha: 0.3),
                             width: 1.5,
                           ),
                         ),
@@ -326,7 +328,9 @@ class _DevisCreateViewState extends State<DevisCreateView> {
                                           )) {
                                             return const Color(0xFFffd60a);
                                           }
-                                          return Colors.white.withOpacity(0.05);
+                                          return Colors.white.withValues(
+                                            alpha: 0.05,
+                                          );
                                         }),
                                     foregroundColor:
                                         WidgetStateProperty.resolveWith<Color>((
@@ -343,7 +347,7 @@ class _DevisCreateViewState extends State<DevisCreateView> {
                                       BorderSide(
                                         color: const Color(
                                           0xFFffd60a,
-                                        ).withOpacity(0.3),
+                                        ).withValues(alpha: 0.3),
                                         width: 1.5,
                                       ),
                                     ),
@@ -446,7 +450,7 @@ class _DevisCreateViewState extends State<DevisCreateView> {
                         'Ajouter des images de votre projet (facultatif)',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Colors.white.withOpacity(0.6),
+                          color: Colors.white.withValues(alpha: 0.6),
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -459,24 +463,28 @@ class _DevisCreateViewState extends State<DevisCreateView> {
                                   border: Border.all(
                                     color: const Color(
                                       0xFFffd60a,
-                                    ).withOpacity(0.2),
+                                    ).withValues(alpha: 0.2),
                                     width: 1.5,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
-                                  color: Colors.white.withOpacity(0.05),
+                                  color: Colors.white.withValues(alpha: 0.05),
                                 ),
                                 child: Column(
                                   children: [
                                     Icon(
                                       Icons.image_outlined,
                                       size: 48,
-                                      color: Colors.white.withOpacity(0.3),
+                                      color: Colors.white.withValues(
+                                        alpha: 0.3,
+                                      ),
                                     ),
                                     const SizedBox(height: 8),
                                     Text(
                                       'Aucune image sélectionnée',
                                       style: TextStyle(
-                                        color: Colors.white.withOpacity(0.5),
+                                        color: Colors.white.withValues(
+                                          alpha: 0.5,
+                                        ),
                                         fontSize: 14,
                                       ),
                                     ),
@@ -516,16 +524,16 @@ class _DevisCreateViewState extends State<DevisCreateView> {
                                                             width: 100,
                                                             height: 100,
                                                             color: Colors.grey
-                                                                .withOpacity(
-                                                                  0.2,
+                                                                .withValues(
+                                                                  alpha: 0.2,
                                                                 ),
                                                             child: Icon(
                                                               Icons
                                                                   .broken_image,
                                                               color: Colors
                                                                   .white
-                                                                  .withOpacity(
-                                                                    0.3,
+                                                                  .withValues(
+                                                                    alpha: 0.3,
                                                                   ),
                                                             ),
                                                           );
@@ -548,16 +556,16 @@ class _DevisCreateViewState extends State<DevisCreateView> {
                                                             width: 100,
                                                             height: 100,
                                                             color: Colors.grey
-                                                                .withOpacity(
-                                                                  0.2,
+                                                                .withValues(
+                                                                  alpha: 0.2,
                                                                 ),
                                                             child: Icon(
                                                               Icons
                                                                   .broken_image,
                                                               color: Colors
                                                                   .white
-                                                                  .withOpacity(
-                                                                    0.3,
+                                                                  .withValues(
+                                                                    alpha: 0.3,
                                                                   ),
                                                             ),
                                                           );
@@ -630,7 +638,7 @@ class _DevisCreateViewState extends State<DevisCreateView> {
                     borderRadius: BorderRadius.circular(12),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFffd60a).withOpacity(0.3),
+                        color: const Color(0xFFffd60a).withValues(alpha: 0.3),
                         blurRadius: 12,
                         offset: const Offset(0, 4),
                       ),
@@ -706,10 +714,10 @@ class _DevisCreateViewState extends State<DevisCreateView> {
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.05),
+            color: Colors.white.withValues(alpha: 0.05),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: const Color(0xFFffd60a).withOpacity(0.2),
+              color: const Color(0xFFffd60a).withValues(alpha: 0.2),
               width: 1.5,
             ),
           ),
@@ -736,13 +744,13 @@ class _DevisCreateViewState extends State<DevisCreateView> {
       ),
       selected: isSelected,
       onSelected: onSelected,
-      backgroundColor: Colors.white.withOpacity(isSelected ? 0.2 : 0.05),
+      backgroundColor: Colors.white.withValues(alpha: isSelected ? 0.2 : 0.05),
       selectedColor: const Color(0xFFffd60a),
       checkmarkColor: const Color(0xFF1a1f2e),
       side: BorderSide(
         color: isSelected
             ? const Color(0xFFffd60a)
-            : const Color(0xFFffd60a).withOpacity(0.2),
+            : const Color(0xFFffd60a).withValues(alpha: 0.2),
         width: 1.5,
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -766,17 +774,17 @@ class _DevisCreateViewState extends State<DevisCreateView> {
       style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
         labelText: labelText,
-        labelStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
+        labelStyle: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
         hintText: hintText,
-        hintStyle: TextStyle(color: Colors.white.withOpacity(0.3)),
+        hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.3)),
         filled: true,
-        fillColor: Colors.white.withOpacity(0.05),
+        fillColor: Colors.white.withValues(alpha: 0.05),
         prefixIcon: Icon(icon, color: const Color(0xFFffd60a)),
         contentPadding: const EdgeInsets.all(14),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(
-            color: Colors.white.withOpacity(0.2),
+            color: Colors.white.withValues(alpha: 0.2),
             width: 1.5,
           ),
         ),
@@ -798,7 +806,6 @@ class _DevisCreateViewState extends State<DevisCreateView> {
   }
 
   // === TOUTE LA LOGIQUE MÉTIER EST PRÉSERVÉE CI-DESSOUS ===
-
 
   void _selectImages() async {
     final ImagePicker picker = ImagePicker();

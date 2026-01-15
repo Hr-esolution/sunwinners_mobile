@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:sunwinners/data/models/user_model.dart';
 import 'package:sunwinners/views/auth/login_view.dart';
 import 'package:sunwinners/views/auth/register_view.dart';
 import 'package:sunwinners/views/auth/splash_view.dart';
@@ -18,6 +19,13 @@ import 'package:sunwinners/views/profile/profile_view.dart';
 import 'package:sunwinners/views/project/project_create_view.dart';
 import 'package:sunwinners/views/project/project_detail_view.dart';
 import 'package:sunwinners/views/project/project_list_view.dart';
+import 'package:sunwinners/views/static_pages/about_view.dart';
+import 'package:sunwinners/views/static_pages/client_info_view.dart';
+import 'package:sunwinners/views/static_pages/privacy_policy_view.dart';
+import 'package:sunwinners/views/static_pages/services_view.dart';
+import 'package:sunwinners/views/static_pages/support.dart';
+import 'package:sunwinners/views/static_pages/technician_info_view.dart';
+import 'package:sunwinners/views/static_pages/terms_of_use_view.dart';
 import 'package:sunwinners/views/subvention/subvention_detail_view.dart';
 import 'package:sunwinners/views/subvention/subvention_list_view.dart';
 import 'package:sunwinners/views/users/user_management_view.dart';
@@ -29,6 +37,7 @@ import 'package:sunwinners/views/devis/technician/respond_to_devis_view.dart';
 import 'package:sunwinners/views/devis/technician/my_responses_view.dart';
 import 'package:sunwinners/views/pages/technician/devis_response_detail_page.dart';
 import 'package:sunwinners/views/devis/owner/assign_technicians_view.dart';
+import 'package:sunwinners/views/users/user_profile_view.dart';
 
 class AppRoutes {
   // AUTH
@@ -67,7 +76,7 @@ class AppRoutes {
   // USER MANAGEMENT
   static const String userManagement = '/users/management';
   static const String technicianApproval = '/technicians/approval';
-
+  static const String userProfile = '/users/profile';
   // TECHNICIAN DEVIS
   static const String technicianRespondToDevis = '/technician/devis/respond';
   static const String technicianMyResponses = '/technician/responses';
@@ -82,6 +91,14 @@ class AppRoutes {
   static const String composantCreate = '/composant/create';
   static const String composantEdit = '/composant/edit';
   static const String composantDetail = '/composant/detail';
+  //static-pages
+  static const String forTechnicians = '/for-technicians';
+  static const String forClient = '/for-clients';
+  static const String about = '/about';
+  static const String privacyPolicy = '/privacy-policy';
+  static const String termsOfUse = '/terms-of-use';
+  static const String support = '/support';
+  static const String service = '/services';
 
   static final routes = [
     // AUTH
@@ -210,5 +227,19 @@ class AppRoutes {
       name: technicianApproval,
       page: () => const TechnicianApprovalView(),
     ),
+
+    GetPage(
+      // Add this route
+      name: userProfile,
+      page: () => UserProfileView(user: Get.arguments as UserModel),
+    ),
+
+    GetPage(name: '/services', page: () => const ServicesView()),
+    GetPage(name: about, page: () => const AboutView()),
+    GetPage(name: privacyPolicy, page: () => const PrivacyPolicyView()),
+    GetPage(name: termsOfUse, page: () => const TermsOfUseView()),
+    GetPage(name: support, page: () => const SupportView()),
+    GetPage(name: '/for-technicians', page: () => const TechnicianInfoView()),
+    GetPage(name: '/for-clients', page: () => const ClientInfoView()),
   ];
 }

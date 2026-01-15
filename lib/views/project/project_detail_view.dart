@@ -234,7 +234,7 @@ class ProjectDetailView extends StatelessWidget {
   Widget _buildActionButtons(BuildContext context, ProjectModel project) {
     final ProjectController controller = Get.find<ProjectController>();
 
-    // TODO: Implement role-based actions
+    //  Implement role-based actions
     // For now, showing basic actions
     return Column(
       children: [
@@ -315,7 +315,7 @@ class ProjectDetailView extends StatelessWidget {
           ),
           child: OutlinedButton(
             onPressed: () {
-              // TODO: Implement edit project functionality
+              //  Implement edit project functionality
               Get.snackbar(
                 'Info',
                 'Fonctionnalité de modification du projet bientôt disponible',

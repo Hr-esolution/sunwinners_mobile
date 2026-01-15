@@ -102,7 +102,7 @@ class _DevisResponseDetailPageState extends State<DevisResponseDetailPage> {
                       child: Icon(
                         Icons.sentiment_dissatisfied,
                         size: 40,
-                        color: const Color(0xFFffd60a).withOpacity(0.6),
+                        color: const Color(0xFFffd60a).withValues(alpha: 0.6),
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -119,7 +119,7 @@ class _DevisResponseDetailPageState extends State<DevisResponseDetailPage> {
                       'Vous n\'avez pas encore répondu à ce devis',
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.white.withOpacity(0.5),
+                        color: Colors.white.withValues(alpha: 0.5),
                       ),
                     ),
                   ],
@@ -173,7 +173,7 @@ class _DevisResponseDetailPageState extends State<DevisResponseDetailPage> {
                             response.commentaire!,
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.white.withOpacity(0.6),
+                              color: Colors.white.withValues(alpha: 0.6),
                             ),
                           ),
                         ],
@@ -209,7 +209,7 @@ class _DevisResponseDetailPageState extends State<DevisResponseDetailPage> {
                         'Aucun composant spécifié dans cette réponse',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Colors.white.withOpacity(0.5),
+                          color: Colors.white.withValues(alpha: 0.5),
                           fontStyle: FontStyle.italic,
                         ),
                       ),
@@ -265,7 +265,7 @@ class _DevisResponseDetailPageState extends State<DevisResponseDetailPage> {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              color: Colors.white.withOpacity(0.7),
+              color: Colors.white.withValues(alpha: 0.7),
             ),
           ),
         ),
@@ -384,7 +384,7 @@ class _DevisResponseDetailPageState extends State<DevisResponseDetailPage> {
                   decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(
-                        color: Colors.white.withOpacity(0.08),
+                        color: Colors.white.withValues(alpha: 0.08),
                         width: 1,
                       ),
                     ),
@@ -412,7 +412,7 @@ class _DevisResponseDetailPageState extends State<DevisResponseDetailPage> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 13,
-                            color: Colors.white.withOpacity(0.8),
+                            color: Colors.white.withValues(alpha: 0.8),
                           ),
                         ),
                       ),
@@ -423,7 +423,7 @@ class _DevisResponseDetailPageState extends State<DevisResponseDetailPage> {
                           textAlign: TextAlign.right,
                           style: TextStyle(
                             fontSize: 13,
-                            color: Colors.white.withOpacity(0.8),
+                            color: Colors.white.withValues(alpha: 0.8),
                           ),
                         ),
                       ),
@@ -442,7 +442,7 @@ class _DevisResponseDetailPageState extends State<DevisResponseDetailPage> {
                     ],
                   ),
                 );
-              }).toList(),
+              }),
             ],
           ),
         ),

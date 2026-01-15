@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:sunwinners/controllers/auth_controller.dart';
 import 'package:sunwinners/core/constants/app_constants.dart';
@@ -286,66 +285,52 @@ class DevisController extends GetxController {
     }
   }
 
-  /// 🔹 Charger les détails d’un devis avec gestion des rôles
+  /// 🔹 Charger les détails d’un devis + les réponses (pour le client)
   Future<void> loadDevisDetail(int id) async {
     _isLoading.value = true;
     update();
     try {
       print('🔍 loadDevisDetail: Attempting to load devis ID: $id');
-
-      // Get the current user's role from AuthController
       final authController = Get.find<AuthController>();
       final userRole = authController.userRole;
-
       print('🔍 loadDevisDetail: Current user role is: $userRole');
 
       Response response;
 
-      // Use the appropriate endpoint based on user role
+      // Charger le devis
       switch (userRole) {
         case 'owner':
         case 'admin':
-          // Use owner endpoint for owners/admins
           response = await devisRepo.getDevisById(id);
           break;
         case 'technician':
-          // Use technician endpoint for technicians
           response = await devisRepo.getAssignedDevisDetail(id);
           break;
         case 'client':
         default:
-          // Use client endpoint for clients
           response = await devisRepo.getDevisDetail(id);
       }
 
-      print('🔍 loadDevisDetail: Response status code: ${response.statusCode}');
-      print(
-        '🔍 loadDevisDetail: Response body type: ${response.body.runtimeType}',
-      );
-      print('🔍 loadDevisDetail: Response body: ${response.body}');
-
       if (response.statusCode == 200) {
         final body = response.body;
-        if (body is Map<String, dynamic>) {
-          // La réponse API contient les données dans un objet 'devis'
-          if (body['devis'] is Map<String, dynamic>) {
-            final devis = DevisModel.fromJson(body['devis']);
-            setCurrentDevis(devis);
-            print('🔍 loadDevisDetail: Successfully loaded devis details');
-          } else {
-            print('🔍 loadDevisDetail: Missing devis data in response');
-            Get.snackbar('Erreur', 'Données du devis manquantes');
+        if (body is Map<String, dynamic> && body['devis'] != null) {
+          final devis = DevisModel.fromJson(body['devis']);
+          setCurrentDevis(devis);
+          print('🔍 loadDevisDetail: Successfully loaded devis details');
+
+          // 🔥 NOUVEAU : Si client et statut "répondu", charger les réponses
+          if (userRole == 'client' &&
+              (devis.responses == null || devis.responses!.isEmpty)) {
+            await _loadResponsesForClient(devis.id);
           }
         } else {
-          print('🔍 loadDevisDetail: Unexpected response format');
-          Get.snackbar('Erreur', 'Format de réponse inattendu');
+          Get.snackbar('Erreur', 'Données du devis manquantes');
         }
       } else {
         final message =
             (response.body is Map && response.body['message'] != null)
             ? response.body['message']
             : AppConstants.serverErrorMessage;
-        print('🔍 loadDevisDetail: Error response: $message');
         Get.snackbar('Erreur', message);
       }
     } catch (e) {
@@ -354,6 +339,59 @@ class DevisController extends GetxController {
     } finally {
       _isLoading.value = false;
       update();
+    }
+  }
+
+  /// 🔹 Charger les réponses pour un client
+  Future<void> _loadResponsesForClient(int devisId) async {
+    try {
+      print('🔍 _loadResponsesForClient: Loading responses for devis $devisId');
+      final response = await devisRepo.getDevisResponses(
+        devisId,
+      ); // → /devis/{id}/responses
+
+      if (response.statusCode == 200) {
+        final body = response.body;
+        if (body is Map<String, dynamic> && body['responses'] is List) {
+          final responses = (body['responses'] as List)
+              .map((json) => DevisResponseModel.fromJson(json))
+              .toList();
+
+          // Mettre à jour le devis actuel avec les réponses
+          final current = currentDevis;
+          if (current != null) {
+            final updatedDevis = DevisModel(
+              id: current.id,
+              userId: current.userId,
+              typeDemandeur: current.typeDemandeur,
+              date: current.date,
+              reference: current.reference,
+              status: current.status,
+              typeDemande: current.typeDemande,
+              objectif: current.objectif,
+              typeInstallation: current.typeInstallation,
+              typeUtilisation: current.typeUtilisation,
+              typePompe: current.typePompe,
+              debitEstime: current.debitEstime,
+              profondeurForage: current.profondeurForage,
+              capaciteReservoir: current.capaciteReservoir,
+              adresseComplete: current.adresseComplete,
+              toitInstallation: current.toitInstallation,
+              images: current.images,
+              technicianId: current.technicianId,
+              createdAt: current.createdAt,
+              updatedAt: current.updatedAt,
+              user: current.user,
+              technicians: current.technicians,
+              responses: responses, // ← Ajout des réponses
+            );
+            setCurrentDevis(updatedDevis);
+            print('🔍 _loadResponsesForClient: Responses loaded and attached');
+          }
+        }
+      }
+    } catch (e) {
+      print('🔍 _loadResponsesForClient error: $e');
     }
   }
 
@@ -376,7 +414,9 @@ class DevisController extends GetxController {
       print('🔍 createDevis: Calling API with data: $data');
 
       // Separate image paths from other data
-      List<String>? imagePaths = data['images'] is List ? List<String>.from(data['images']) : null;
+      List<String>? imagePaths = data['images'] is List
+          ? List<String>.from(data['images'])
+          : null;
 
       // Remove images from the main data to avoid conflicts
       Map<String, dynamic> devisData = Map.from(data);
@@ -621,7 +661,6 @@ class DevisController extends GetxController {
       update();
     }
   }
-
 
   /// 🔹 Charger tous les devis pour admin/owner
   Future<void> _loadAllDevisForAdmin() async {

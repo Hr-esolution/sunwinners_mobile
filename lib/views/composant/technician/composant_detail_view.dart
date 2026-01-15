@@ -85,12 +85,12 @@ class ComposantDetailView extends StatelessWidget {
                     height: 80,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: const Color(0xFFff6b6b).withOpacity(0.1),
+                      color: const Color(0xFFff6b6b).withValues(alpha: 0.1),
                     ),
                     child: Icon(
                       Icons.error_outline,
                       size: 40,
-                      color: const Color(0xFFff6b6b).withOpacity(0.6),
+                      color: const Color(0xFFff6b6b).withValues(alpha: 0.6),
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -130,7 +130,9 @@ class ComposantDetailView extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
-                            color: const Color(0xFFffd60a).withOpacity(0.2),
+                            color: const Color(
+                              0xFFffd60a,
+                            ).withValues(alpha: 0.2),
                             width: 1.5,
                           ),
                         ),
@@ -282,7 +284,9 @@ class ComposantDetailView extends StatelessWidget {
                       ),
                       content: Text(
                         'Êtes-vous sûr de vouloir supprimer ce composant ? Cette action est irréversible.',
-                        style: TextStyle(color: Colors.white.withOpacity(0.8)),
+                        style: TextStyle(
+                          color: Colors.white.withValues(alpha: 0.8),
+                        ),
                       ),
                       actions: [
                         TextButton(
@@ -346,7 +350,7 @@ class ComposantDetailView extends StatelessWidget {
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w600,
-                color: Colors.white.withOpacity(0.7),
+                color: Colors.white.withValues(alpha: 0.7),
               ),
             ),
           ),

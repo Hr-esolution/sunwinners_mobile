@@ -72,12 +72,12 @@ class ProjectListView extends StatelessWidget {
                         height: 80,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: const Color(0xFFffd60a).withOpacity(0.1),
+                          color: const Color(0xFFffd60a).withValues(alpha: 0.1),
                         ),
                         child: Icon(
                           Icons.work_outline,
                           size: 40,
-                          color: const Color(0xFFffd60a).withOpacity(0.6),
+                          color: const Color(0xFFffd60a).withValues(alpha: 0.6),
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -131,12 +131,12 @@ class ProjectListView extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                color: const Color(0xFFffd60a).withOpacity(0.2),
+                color: const Color(0xFFffd60a).withValues(alpha: 0.2),
                 width: 1.5,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFffd60a).withOpacity(0.1),
+                  color: const Color(0xFFffd60a).withValues(alpha: 0.1),
                   blurRadius: 12,
                 ),
               ],
@@ -159,10 +159,10 @@ class ProjectListView extends StatelessWidget {
                             width: 40,
                             height: 40,
                             decoration: BoxDecoration(
-                              color: statusColor.withOpacity(0.2),
+                              color: statusColor.withValues(alpha: 0.2),
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
-                                color: statusColor.withOpacity(0.4),
+                                color: statusColor.withValues(alpha: 0.4),
                                 width: 1.5,
                               ),
                             ),
@@ -186,7 +186,7 @@ class ProjectListView extends StatelessWidget {
                           Icon(
                             Icons.arrow_forward_ios_rounded,
                             size: 16,
-                            color: Colors.white.withOpacity(0.5),
+                            color: Colors.white.withValues(alpha: 0.5),
                           ),
                         ],
                       ),
@@ -196,7 +196,7 @@ class ProjectListView extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.7),
+                          color: Colors.white.withValues(alpha: 0.7),
                           fontSize: 14,
                         ),
                       ),
@@ -230,7 +230,7 @@ class ProjectListView extends StatelessWidget {
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.6),
+                                color: Colors.white.withValues(alpha: 0.6),
                                 fontSize: 13,
                               ),
                             ),

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sunwinners/widgets/main_drawer.dart';
 import '../../controllers/auth_controller.dart';
 import '../../core/constants/app_routes.dart';
 
@@ -36,6 +37,7 @@ class ClientDashboardView extends StatelessWidget {
           ),
         ],
       ),
+      drawer: const MainDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -66,7 +68,9 @@ class ClientDashboardView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFF00ff88).withOpacity(0.3),
+                            color: const Color(
+                              0xFF00ff88,
+                            ).withValues(alpha: 0.3),
                             blurRadius: 16,
                             spreadRadius: 0,
                             offset: const Offset(0, 6),
@@ -90,7 +94,9 @@ class ClientDashboardView extends StatelessWidget {
                             'Gérez vos projets solaires et demandes',
                             style: TextStyle(
                               fontSize: 15,
-                              color: const Color(0xFF0f1419).withOpacity(0.8),
+                              color: const Color(
+                                0xFF0f1419,
+                              ).withValues(alpha: 0.8),
                             ),
                           ),
                         ],
@@ -175,7 +181,7 @@ class ClientDashboardView extends StatelessWidget {
                         ),
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                          color: const Color(0xFFffd60a).withOpacity(0.2),
+                          color: const Color(0xFFffd60a).withValues(alpha: 0.2),
                           width: 1.5,
                         ),
                       ),
@@ -198,7 +204,7 @@ class ClientDashboardView extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600,
-                                  color: Colors.white.withOpacity(0.8),
+                                  color: Colors.white.withValues(alpha: 0.8),
                                 ),
                               ),
                               const SizedBox(height: 4),
@@ -206,7 +212,7 @@ class ClientDashboardView extends StatelessWidget {
                                 'Vos activités récentes apparaîtront ici',
                                 style: TextStyle(
                                   fontSize: 13,
-                                  color: Colors.white.withOpacity(0.5),
+                                  color: Colors.white.withValues(alpha: 0.5),
                                 ),
                               ),
                             ],
@@ -250,12 +256,12 @@ class ClientDashboardView extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                color: const Color(0xFFffd60a).withOpacity(0.2),
+                color: const Color(0xFFffd60a).withValues(alpha: 0.2),
                 width: 1.5,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFffd60a).withOpacity(0.1),
+                  color: const Color(0xFFffd60a).withValues(alpha: 0.1),
                   blurRadius: 12,
                   offset: const Offset(0, 4),
                 ),
@@ -273,7 +279,7 @@ class ClientDashboardView extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFffd60a).withOpacity(0.15),
+                        color: const Color(0xFFffd60a).withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Icon(
@@ -296,7 +302,7 @@ class ClientDashboardView extends StatelessWidget {
                       subtitle,
                       style: TextStyle(
                         fontSize: 12,
-                        color: Colors.white.withOpacity(0.6),
+                        color: Colors.white.withValues(alpha: 0.6),
                       ),
                     ),
                   ],

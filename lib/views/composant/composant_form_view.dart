@@ -81,39 +81,29 @@ class _ComposantFormViewState extends State<ComposantFormView> {
       final authController = Get.find<AuthController>();
       int technicianId = 0;
 
+      final currentUser = authController.currentUser;
+
       if (authController.userRole == 'technician') {
-        final currentUser = authController.currentUser;
-        if (currentUser != null &&
-            currentUser.isTechnician &&
-            currentUser.technician != null &&
-            currentUser.technician!.id != 0) {
-          technicianId = currentUser.technician!.id;
-        } else {
-          authController.loadUserProfile();
-          final updatedUser = authController.currentUser;
-          if (updatedUser != null &&
-              updatedUser.isTechnician &&
-              updatedUser.technician != null &&
-              updatedUser.technician!.id != 0) {
-            technicianId = updatedUser.technician!.id;
-          } else {
-            technicianId = currentUser?.id ?? 0;
-          }
-        }
+        technicianId = currentUser?.technician?.id ?? currentUser?.id ?? 0;
       } else if (authController.userRole == 'admin') {
-        technicianId = widget.composant?.technicianId ?? 0;
+        technicianId =
+            widget.composant?.technicianId ??
+            controller.selectedComposant?.technicianId ??
+            0;
       }
 
+      final composantId = widget.isEditing
+          ? widget.composant?.id ?? controller.selectedComposant?.id ?? 0
+          : 0;
+
       final composant = ComposantModel(
-        id: widget.isEditing ? widget.composant!.id : 0,
+        id: composantId,
         name: _nameController.text.trim(),
         reference: _referenceController.text.trim().isEmpty
             ? null
             : _referenceController.text.trim(),
         unitPrice: double.tryParse(_unitPriceController.text) ?? 0.0,
-        technicianId: widget.isEditing
-            ? widget.composant!.technicianId
-            : technicianId,
+        technicianId: technicianId,
         manufacturer: _manufacturerController.text.trim().isEmpty
             ? null
             : _manufacturerController.text.trim(),
@@ -124,11 +114,15 @@ class _ComposantFormViewState extends State<ComposantFormView> {
             ? null
             : _certificationsController.text.trim(),
         createdAt: widget.isEditing
-            ? widget.composant!.createdAt
+            ? widget.composant?.createdAt ??
+                  controller.selectedComposant?.createdAt ??
+                  DateTime.now()
             : DateTime.now(),
         updatedAt: DateTime.now(),
-        technician: widget.composant?.technician,
-        devis: widget.composant?.devis,
+        technician:
+            widget.composant?.technician ??
+            controller.selectedComposant?.technician,
+        devis: widget.composant?.devis ?? controller.selectedComposant?.devis,
       );
 
       if (widget.isEditing) {
@@ -177,123 +171,82 @@ class _ComposantFormViewState extends State<ComposantFormView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // Nom du composant
-                  TextFormField(
+                  _buildTextField(
                     controller: _nameController,
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'Veuillez entrer un nom pour le composant';
-                      }
-                      return null;
-                    },
-                    decoration: _buildInputDecoration(
-                      labelText: 'Nom du composant *',
-                      icon: Icons.label_outlined,
-                      hintText: 'Entrez le nom du composant',
-                    ),
+                    label: 'Nom du composant *',
+                    icon: Icons.label_outlined,
+                    validator: (v) => v == null || v.isEmpty
+                        ? 'Veuillez entrer un nom'
+                        : null,
                   ),
                   const SizedBox(height: 16),
-
-                  // Référence
-                  TextFormField(
+                  _buildTextField(
                     controller: _referenceController,
-                    decoration: _buildInputDecoration(
-                      labelText: 'Référence',
-                      icon: Icons.tag_outlined,
-                      hintText: 'Entrez la référence (optionnel)',
-                    ),
+                    label: 'Référence',
+                    icon: Icons.tag_outlined,
                   ),
                   const SizedBox(height: 16),
-
-                  // Prix unitaire
-                  TextFormField(
+                  _buildTextField(
                     controller: _unitPriceController,
+                    label: 'Prix unitaire (€) *',
+                    icon: Icons.euro_outlined,
                     keyboardType: TextInputType.numberWithOptions(
                       decimal: true,
                     ),
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'Veuillez entrer un prix unitaire';
-                      }
-                      if (double.tryParse(value) == null) {
-                        return 'Veuillez entrer un prix valide';
-                      }
+                    validator: (v) {
+                      if (v == null || v.isEmpty)
+                        return 'Veuillez entrer un prix';
+                      if (double.tryParse(v) == null) return 'Prix invalide';
                       return null;
                     },
-                    decoration: _buildInputDecoration(
-                      labelText: 'Prix unitaire (€) *',
-                      icon: Icons.euro_outlined,
-                      hintText: 'Entrez le prix unitaire',
-                    ),
                   ),
                   const SizedBox(height: 16),
-
-                  // Fabricant
-                  TextFormField(
+                  _buildTextField(
                     controller: _manufacturerController,
-                    decoration: _buildInputDecoration(
-                      labelText: 'Fabricant',
-                      icon: Icons.business_outlined,
-                      hintText: 'Entrez le fabricant (optionnel)',
-                    ),
+                    label: 'Fabricant',
+                    icon: Icons.business_outlined,
                   ),
                   const SizedBox(height: 16),
-
-                  // Garantie
-                  TextFormField(
+                  _buildTextField(
                     controller: _warrantyPeriodController,
+                    label: 'Période de garantie (mois)',
+                    icon: Icons.shield_outlined,
                     keyboardType: TextInputType.number,
-                    decoration: _buildInputDecoration(
-                      labelText: 'Période de garantie (mois)',
-                      icon: Icons.shield_outlined,
-                      hintText:
-                          'Entrez la période de garantie en mois (optionnel)',
-                    ),
                   ),
                   const SizedBox(height: 16),
-
-                  // Certifications
-                  TextFormField(
+                  _buildTextField(
                     controller: _certificationsController,
-                    decoration: _buildInputDecoration(
-                      labelText: 'Certifications',
-                      icon: Icons.verified_outlined,
-                      hintText: 'Entrez les certifications (optionnel)',
-                    ),
+                    label: 'Certifications',
+                    icon: Icons.verified_outlined,
                   ),
                   const SizedBox(height: 24),
-
-                  // Bouton de soumission
-                  Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Color(0xFFffd60a), Color(0xFFffc300)],
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0xFFffd60a),
-                          blurRadius: 20,
-                          spreadRadius: 0,
-                          offset: Offset(0, 8),
+                  InkWell(
+                    onTap: _submitForm,
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [Color(0xFFffd60a), Color(0xFFffc300)],
                         ),
-                      ],
-                    ),
-                    child: InkWell(
-                      onTap: _submitForm,
-                      borderRadius: BorderRadius.circular(10),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        child: Center(
-                          child: Text(
-                            widget.isEditing
-                                ? 'Mettre à jour'
-                                : 'Créer le composant',
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xFF1a1f2e),
-                            ),
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color(0xFFffd60a),
+                            blurRadius: 20,
+                            offset: Offset(0, 8),
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          widget.isEditing
+                              ? 'Mettre à jour'
+                              : 'Créer le composant',
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xFF1a1f2e),
                           ),
                         ),
                       ),
@@ -308,41 +261,46 @@ class _ComposantFormViewState extends State<ComposantFormView> {
     );
   }
 
-  InputDecoration _buildInputDecoration({
-    required String labelText,
+  Widget _buildTextField({
+    required TextEditingController controller,
+    required String label,
     required IconData icon,
-    required String hintText,
+    TextInputType keyboardType = TextInputType.text,
+    String? Function(String?)? validator,
   }) {
-    return InputDecoration(
-      labelText: labelText,
-      labelStyle: TextStyle(color: Colors.white, fontSize: 18),
-      hintText: hintText,
-      hintStyle: TextStyle(color: Colors.white, fontSize: 18),
-      prefixIcon: Icon(
-        icon,
-        color: const Color(0xFFffd60a).withOpacity(0.6),
-        size: 20,
-      ),
-      filled: true,
-      fillColor: Colors.white.withOpacity(0.05),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(
-          color: Colors.white.withOpacity(0.1),
-          width: 1.5,
+    return TextFormField(
+      controller: controller,
+      keyboardType: keyboardType,
+      style: const TextStyle(color: Colors.white),
+      validator: validator,
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: const TextStyle(color: Colors.white, fontSize: 18),
+        prefixIcon: Icon(
+          icon,
+          color: const Color(0xFFffd60a).withValues(alpha: 0.6),
         ),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: Color(0xFFffd60a), width: 2),
-      ),
-      errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: Color(0xFFff6b6b), width: 2),
-      ),
-      focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: Color(0xFFff6b6b), width: 2),
+        filled: true,
+        fillColor: Colors.white.withValues(alpha: 0.05),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(
+            color: Colors.white.withValues(alpha: 0.1),
+            width: 1.5,
+          ),
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+          borderSide: BorderSide(color: Color(0xFFffd60a), width: 2),
+        ),
+        errorBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+          borderSide: BorderSide(color: Color(0xFFff6b6b), width: 2),
+        ),
+        focusedErrorBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+          borderSide: BorderSide(color: Color(0xFFff6b6b), width: 2),
+        ),
       ),
     );
   }

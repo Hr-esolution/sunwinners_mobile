@@ -103,7 +103,7 @@ class _MyResponsesViewState extends State<MyResponsesView> {
                       'Chargement de vos réponses...',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withValues(alpha: 0.7),
                       ),
                     ),
                   ],
@@ -121,12 +121,12 @@ class _MyResponsesViewState extends State<MyResponsesView> {
                       height: 80,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: const Color(0xFFffd60a).withOpacity(0.1),
+                        color: const Color(0xFFffd60a).withValues(alpha: 0.1),
                       ),
                       child: Icon(
                         Icons.chat_bubble_outline,
                         size: 40,
-                        color: const Color(0xFFffd60a).withOpacity(0.6),
+                        color: const Color(0xFFffd60a).withValues(alpha: 0.6),
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -143,7 +143,7 @@ class _MyResponsesViewState extends State<MyResponsesView> {
                       'Vous n\'avez pas encore répondu à des devis',
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.white.withOpacity(0.5),
+                        color: Colors.white.withValues(alpha: 0.5),
                       ),
                     ),
                   ],
@@ -199,12 +199,12 @@ class _MyResponsesViewState extends State<MyResponsesView> {
               ),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                color: const Color(0xFFffd60a).withOpacity(0.2),
+                color: const Color(0xFFffd60a).withValues(alpha: 0.2),
                 width: 1.5,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFffd60a).withOpacity(0.1),
+                  color: const Color(0xFFffd60a).withValues(alpha: 0.1),
                   blurRadius: 12,
                 ),
               ],
@@ -259,13 +259,13 @@ class _MyResponsesViewState extends State<MyResponsesView> {
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [
-                                statusColor.withOpacity(0.25),
-                                statusColor.withOpacity(0.12),
+                                statusColor.withValues(alpha: 0.25),
+                                statusColor.withValues(alpha: 0.12),
                               ],
                             ),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
-                              color: statusColor.withOpacity(0.5),
+                              color: statusColor.withValues(alpha: 0.5),
                               width: 1.5,
                             ),
                           ),
@@ -285,7 +285,7 @@ class _MyResponsesViewState extends State<MyResponsesView> {
                       'Type: ${_formatTypeDemande(devis.typeDemande)}',
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.white.withOpacity(0.5),
+                        color: Colors.white.withValues(alpha: 0.5),
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -294,7 +294,7 @@ class _MyResponsesViewState extends State<MyResponsesView> {
                       'Objectif: ${_formatObjectif(devis.objectif)}',
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.white.withOpacity(0.5),
+                        color: Colors.white.withValues(alpha: 0.5),
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -304,7 +304,7 @@ class _MyResponsesViewState extends State<MyResponsesView> {
                         Icon(
                           Icons.calendar_today,
                           size: 14,
-                          color: Colors.white.withOpacity(0.3),
+                          color: Colors.white.withValues(alpha: 0.3),
                         ),
                         const SizedBox(width: 4),
                         Text(
@@ -313,7 +313,7 @@ class _MyResponsesViewState extends State<MyResponsesView> {
                               : 'Date non spécifiée',
                           style: TextStyle(
                             fontSize: 12,
-                            color: Colors.white.withOpacity(0.3),
+                            color: Colors.white.withValues(alpha: 0.3),
                           ),
                         ),
                       ],
@@ -330,7 +330,9 @@ class _MyResponsesViewState extends State<MyResponsesView> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
-                            color: const Color(0xFF00ff88).withOpacity(0.5),
+                            color: const Color(
+                              0xFF00ff88,
+                            ).withValues(alpha: 0.5),
                             width: 1.5,
                           ),
                         ),
@@ -362,7 +364,9 @@ class _MyResponsesViewState extends State<MyResponsesView> {
                               ),
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
-                                color: const Color(0xFF00d4ff).withOpacity(0.3),
+                                color: const Color(
+                                  0xFF00d4ff,
+                                ).withValues(alpha: 0.3),
                                 width: 1,
                               ),
                             ),
@@ -384,7 +388,9 @@ class _MyResponsesViewState extends State<MyResponsesView> {
                                     'Commentaire: ${response.commentaire}',
                                     style: TextStyle(
                                       fontSize: 13,
-                                      color: Colors.white.withOpacity(0.6),
+                                      color: Colors.white.withValues(
+                                        alpha: 0.6,
+                                      ),
                                     ),
                                   ),
                                 const SizedBox(height: 4),
@@ -392,7 +398,7 @@ class _MyResponsesViewState extends State<MyResponsesView> {
                                   'Prix Total: ${response.prixTotal != null ? '${response.prixTotal!.toStringAsFixed(2)} €' : 'Non spécifié'}',
                                   style: TextStyle(
                                     fontSize: 13,
-                                    color: Colors.white.withOpacity(0.6),
+                                    color: Colors.white.withValues(alpha: 0.6),
                                   ),
                                 ),
                                 const SizedBox(height: 4),
@@ -400,7 +406,7 @@ class _MyResponsesViewState extends State<MyResponsesView> {
                                   'Statut: ${_formatResponseStatus(response.statut ?? '')}',
                                   style: TextStyle(
                                     fontSize: 13,
-                                    color: Colors.white.withOpacity(0.6),
+                                    color: Colors.white.withValues(alpha: 0.6),
                                   ),
                                 ),
                                 const SizedBox(height: 4),
@@ -408,7 +414,7 @@ class _MyResponsesViewState extends State<MyResponsesView> {
                                   'Composants: ${(response.composants ?? response.components)?.length ?? 0}',
                                   style: TextStyle(
                                     fontSize: 13,
-                                    color: Colors.white.withOpacity(0.6),
+                                    color: Colors.white.withValues(alpha: 0.6),
                                   ),
                                 ),
                               ],

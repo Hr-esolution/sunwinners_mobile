@@ -16,13 +16,13 @@ class PrimaryButton extends StatelessWidget {
   final double? width;
 
   const PrimaryButton({
-    Key? key,
+    super.key,
     required this.text,
     this.onPressed,
     this.icon,
     this.isLoading = false,
     this.width,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class PrimaryButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppBorderRadius.l),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 4,
             offset: const Offset(0, 2),
           ),
@@ -87,11 +87,11 @@ class SecondaryButton extends StatelessWidget {
   final Widget? icon;
 
   const SecondaryButton({
-    Key? key,
+    super.key,
     required this.text,
     this.onPressed,
     this.icon,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -126,8 +126,7 @@ class TertiaryButton extends StatelessWidget {
   final String text;
   final VoidCallback? onPressed;
 
-  const TertiaryButton({Key? key, required this.text, this.onPressed})
-    : super(key: key);
+  const TertiaryButton({super.key, required this.text, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -150,12 +149,12 @@ class IconButtonWidget extends StatelessWidget {
   final Color? iconColor;
 
   const IconButtonWidget({
-    Key? key,
+    super.key,
     required this.icon,
     this.onPressed,
     this.backgroundColor,
     this.iconColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -191,7 +190,7 @@ class CustomInputField extends StatelessWidget {
   final Widget? suffixIcon;
 
   const CustomInputField({
-    Key? key,
+    super.key,
     required this.label,
     this.hintText,
     this.controller,
@@ -201,7 +200,7 @@ class CustomInputField extends StatelessWidget {
     this.onChanged,
     this.prefixIcon,
     this.suffixIcon,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -258,11 +257,11 @@ class CustomCheckbox extends StatefulWidget {
   final String? label;
 
   const CustomCheckbox({
-    Key? key,
+    super.key,
     required this.value,
     this.onChanged,
     this.label,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomCheckbox> createState() => _CustomCheckboxState();
@@ -309,12 +308,12 @@ class CustomRadio<T> extends StatelessWidget {
   final String? label;
 
   const CustomRadio({
-    Key? key,
+    super.key,
     required this.value,
     required this.groupValue,
     this.onChanged,
     this.label,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -361,8 +360,7 @@ class CustomToggle extends StatefulWidget {
   final bool value;
   final ValueChanged<bool>? onChanged;
 
-  const CustomToggle({Key? key, required this.value, this.onChanged})
-    : super(key: key);
+  const CustomToggle({super.key, required this.value, this.onChanged});
 
   @override
   State<CustomToggle> createState() => _CustomToggleState();
@@ -383,7 +381,7 @@ class _CustomToggleState extends State<CustomToggle> {
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.1),
+                color: Colors.black.withValues(alpha: 0.1),
                 blurRadius: 2,
                 offset: const Offset(0, 1),
               ),
@@ -419,13 +417,13 @@ class CustomSlider extends StatelessWidget {
   final String? label;
 
   const CustomSlider({
-    Key? key,
+    super.key,
     required this.value,
     this.min = 0.0,
     this.max = 100.0,
     this.onChanged,
     this.label,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -444,7 +442,7 @@ class CustomSlider extends StatelessWidget {
             activeTrackColor: AppColors.gold,
             inactiveTrackColor: AppColors.lightGray,
             thumbColor: AppColors.white,
-            overlayColor: AppColors.gold.withOpacity(0.2),
+            overlayColor: AppColors.gold.withValues(alpha: 0.2),
           ),
           child: Slider(value: value, min: min, max: max, onChanged: onChanged),
         ),
@@ -461,12 +459,12 @@ class CustomBadge extends StatelessWidget {
   final Widget? child;
 
   const CustomBadge({
-    Key? key,
+    super.key,
     required this.text,
     this.backgroundColor = AppColors.gold,
     this.textColor = AppColors.white,
     this.child,
-  }) : super(key: key);
+  });
 
   factory CustomBadge.success({String text = '', Widget? child}) {
     return CustomBadge(
@@ -524,7 +522,7 @@ class CustomCard extends StatelessWidget {
   final VoidCallback? onTap;
 
   const CustomCard({
-    Key? key,
+    super.key,
     required this.child,
     this.margin,
     this.padding,
@@ -532,7 +530,7 @@ class CustomCard extends StatelessWidget {
     this.elevation,
     this.shape,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -573,8 +571,12 @@ class CustomDivider extends StatelessWidget {
   final Color? color;
   final EdgeInsetsGeometry? margin;
 
-  const CustomDivider({Key? key, this.thickness = 0.5, this.color, this.margin})
-    : super(key: key);
+  const CustomDivider({
+    super.key,
+    this.thickness = 0.5,
+    this.color,
+    this.margin,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -597,13 +599,13 @@ class CustomChip extends StatelessWidget {
   final Color? unselectedColor;
 
   const CustomChip({
-    Key? key,
+    super.key,
     required this.label,
     this.isSelected = false,
     this.onChanged,
     this.selectedColor,
     this.unselectedColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -631,12 +633,12 @@ class CustomProgressBar extends StatelessWidget {
   final Color? valueColor;
 
   const CustomProgressBar({
-    Key? key,
+    super.key,
     required this.value,
     this.height = 3,
     this.backgroundColor,
     this.valueColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -657,12 +659,12 @@ class CustomCircularProgress extends StatelessWidget {
   final String? text;
 
   const CustomCircularProgress({
-    Key? key,
+    super.key,
     this.size = 60,
     this.strokeWidth = 3,
     this.valueColor,
     this.text,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -699,11 +701,11 @@ class CustomStepper extends StatelessWidget {
   final List<String> steps;
 
   const CustomStepper({
-    Key? key,
+    super.key,
     required this.currentStep,
     required this.totalSteps,
     required this.steps,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -764,7 +766,7 @@ class CustomSpinner extends StatelessWidget {
   final double size;
   final Color? color;
 
-  const CustomSpinner({Key? key, this.size = 40, this.color}) : super(key: key);
+  const CustomSpinner({super.key, this.size = 40, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -789,14 +791,14 @@ class CustomAvatar extends StatelessWidget {
   final VoidCallback? onTap;
 
   const CustomAvatar({
-    Key? key,
+    super.key,
     this.imageUrl,
     this.initials,
     this.radius = 24,
     this.backgroundColor,
     this.textColor,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -828,12 +830,12 @@ class CustomRating extends StatelessWidget {
   final bool interactive;
 
   const CustomRating({
-    Key? key,
+    super.key,
     required this.rating,
     this.maxRating = 5,
     this.onRatingChanged,
     this.interactive = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -871,7 +873,7 @@ class CustomListItem extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
 
   const CustomListItem({
-    Key? key,
+    super.key,
     required this.leading,
     required this.title,
     this.subtitle,
@@ -879,7 +881,7 @@ class CustomListItem extends StatelessWidget {
     this.onTap,
     this.backgroundColor,
     this.padding,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -904,7 +906,7 @@ class CustomListItem extends StatelessWidget {
 class CustomBreadcrumb extends StatelessWidget {
   final List<BreadcrumbItem> items;
 
-  const CustomBreadcrumb({Key? key, required this.items}) : super(key: key);
+  const CustomBreadcrumb({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
@@ -947,11 +949,11 @@ class TechnicianApprovalCard extends StatelessWidget {
   final VoidCallback? onRefresh;
 
   const TechnicianApprovalCard({
-    Key? key,
+    super.key,
     required this.pendingTechnicians,
     required this.userController,
     this.onRefresh,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -970,7 +972,7 @@ class TechnicianApprovalCard extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: const Color(0xFFffd60a).withOpacity(0.2),
+              color: const Color(0xFFffd60a).withValues(alpha: 0.2),
               width: 1.5,
             ),
           ),
@@ -1008,13 +1010,13 @@ class TechnicianApprovalCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          const Color(0xFFff6b6b).withOpacity(0.2),
-                          const Color(0xFFff5252).withOpacity(0.1),
+                          const Color(0xFFff6b6b).withValues(alpha: 0.2),
+                          const Color(0xFFff5252).withValues(alpha: 0.1),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
-                        color: const Color(0xFFff6b6b).withOpacity(0.4),
+                        color: const Color(0xFFff6b6b).withValues(alpha: 0.4),
                         width: 1.5,
                       ),
                     ),
@@ -1043,7 +1045,7 @@ class TechnicianApprovalCard extends StatelessWidget {
                     ),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: const Color(0xFF00d4ff).withOpacity(0.3),
+                      color: const Color(0xFF00d4ff).withValues(alpha: 0.3),
                       width: 1,
                     ),
                   ),
@@ -1051,7 +1053,7 @@ class TechnicianApprovalCard extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.check_circle_outline,
-                        color: const Color(0xFF00d4ff).withOpacity(0.6),
+                        color: const Color(0xFF00d4ff).withValues(alpha: 0.6),
                         size: 40,
                       ),
                       const SizedBox(height: 8),
@@ -1059,7 +1061,7 @@ class TechnicianApprovalCard extends StatelessWidget {
                         'Aucun technicien en attente',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Colors.white.withOpacity(0.8),
+                          color: Colors.white.withValues(alpha: 0.8),
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -1068,7 +1070,7 @@ class TechnicianApprovalCard extends StatelessWidget {
                         'Tous les techniciens sont approuvés',
                         style: TextStyle(
                           fontSize: 12,
-                          color: Colors.white.withOpacity(0.6),
+                          color: Colors.white.withValues(alpha: 0.6),
                         ),
                       ),
                     ],
@@ -1135,7 +1137,7 @@ class TechnicianApprovalCard extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: const Color(0xFFff6b6b).withOpacity(0.3),
+          color: const Color(0xFFff6b6b).withValues(alpha: 0.3),
           width: 1,
         ),
       ),
@@ -1146,7 +1148,7 @@ class TechnicianApprovalCard extends StatelessWidget {
             height: 36,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: const Color(0xFFff6b6b).withOpacity(0.2),
+              color: const Color(0xFFff6b6b).withValues(alpha: 0.2),
               border: Border.all(color: const Color(0xFFff6b6b), width: 1.5),
             ),
             child: const Icon(
@@ -1175,7 +1177,7 @@ class TechnicianApprovalCard extends StatelessWidget {
                   technician.email,
                   style: TextStyle(
                     fontSize: 11,
-                    color: Colors.white.withOpacity(0.6),
+                    color: Colors.white.withValues(alpha: 0.6),
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,

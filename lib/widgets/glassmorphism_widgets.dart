@@ -279,6 +279,10 @@ class GlassmorphismCard extends StatelessWidget {
 
 extension ColorExtension on Color {
   Color withValues({double alpha = 1.0}) {
-    return Color.fromRGBO(red, green, blue, alpha);
+    final int r = ((this.r * 255.0).round()) & 0xff;
+    final int g = ((this.g * 255.0).round()) & 0xff;
+    final int b = ((this.b * 255.0).round()) & 0xff;
+
+    return Color.fromRGBO(r, g, b, alpha);
   }
 }

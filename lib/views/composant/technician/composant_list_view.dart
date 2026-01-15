@@ -75,12 +75,12 @@ class ComposantListView extends StatelessWidget {
                     height: 80,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: const Color(0xFFffd60a).withOpacity(0.1),
+                      color: const Color(0xFFffd60a).withValues(alpha: 0.1),
                     ),
                     child: Icon(
                       Icons.inventory_2_outlined,
                       size: 40,
-                      color: const Color(0xFFffd60a).withOpacity(0.6),
+                      color: const Color(0xFFffd60a).withValues(alpha: 0.6),
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -97,7 +97,7 @@ class ComposantListView extends StatelessWidget {
                     'Commencez par ajouter votre premier composant',
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.white.withOpacity(0.5),
+                      color: Colors.white.withValues(alpha: 0.5),
                     ),
                   ),
                 ],
@@ -161,12 +161,12 @@ class ComposantListView extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                color: const Color(0xFFffd60a).withOpacity(0.2),
+                color: const Color(0xFFffd60a).withValues(alpha: 0.2),
                 width: 1.5,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFffd60a).withOpacity(0.1),
+                  color: const Color(0xFFffd60a).withValues(alpha: 0.1),
                   blurRadius: 12,
                 ),
               ],
@@ -191,10 +191,12 @@ class ComposantListView extends StatelessWidget {
                         width: 50,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: const Color(0xFFffd60a).withOpacity(0.1),
+                          color: const Color(0xFFffd60a).withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
-                            color: const Color(0xFFffd60a).withOpacity(0.3),
+                            color: const Color(
+                              0xFFffd60a,
+                            ).withValues(alpha: 0.3),
                             width: 1.5,
                           ),
                         ),
@@ -226,7 +228,7 @@ class ComposantListView extends StatelessWidget {
                                 'Référence: ${composant.reference}',
                                 style: TextStyle(
                                   fontSize: 13,
-                                  color: Colors.white.withOpacity(0.6),
+                                  color: Colors.white.withValues(alpha: 0.6),
                                 ),
                               ),
                             const SizedBox(height: 2),
@@ -246,7 +248,7 @@ class ComposantListView extends StatelessWidget {
                       Icon(
                         Icons.arrow_forward_ios,
                         size: 16,
-                        color: Colors.white.withOpacity(0.5),
+                        color: Colors.white.withValues(alpha: 0.5),
                       ),
                     ],
                   ),

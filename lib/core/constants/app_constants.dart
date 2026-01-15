@@ -2,7 +2,7 @@ class AppConstants {
   // API Configuration
   // Use your local IP address for iOS simulator/device
   static const String baseUrl =
-      'http://localhost:8000/api'; // Replace with your actual IP
+      'https://sunwinners.ma/api'; // Replace with your actual IP
   // Alternative for iOS simulator: static const String baseUrl = 'http://127.0.0.1:8000/api';
   // Storage Keys
   static const String tokenKey = 'auth_token';

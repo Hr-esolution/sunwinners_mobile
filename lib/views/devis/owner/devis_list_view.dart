@@ -86,7 +86,7 @@ class _OwnerDevisListViewState extends State<OwnerDevisListView> {
                       'Chargement de tous les devis...',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withValues(alpha: 0.7),
                       ),
                     ),
                   ],
@@ -104,12 +104,12 @@ class _OwnerDevisListViewState extends State<OwnerDevisListView> {
                       height: 80,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: const Color(0xFFffd60a).withOpacity(0.1),
+                        color: const Color(0xFFffd60a).withValues(alpha: 0.1),
                       ),
                       child: Icon(
                         Icons.list_alt_outlined,
                         size: 40,
-                        color: const Color(0xFFffd60a).withOpacity(0.6),
+                        color: const Color(0xFFffd60a).withValues(alpha: 0.6),
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -126,7 +126,7 @@ class _OwnerDevisListViewState extends State<OwnerDevisListView> {
                       'Tous les devis apparaîtront ici',
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.white.withOpacity(0.5),
+                        color: Colors.white.withValues(alpha: 0.5),
                       ),
                     ),
                   ],
@@ -176,12 +176,12 @@ class _OwnerDevisListViewState extends State<OwnerDevisListView> {
               ),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                color: const Color(0xFFffd60a).withOpacity(0.2),
+                color: const Color(0xFFffd60a).withValues(alpha: 0.2),
                 width: 1.5,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFffd60a).withOpacity(0.1),
+                  color: const Color(0xFFffd60a).withValues(alpha: 0.1),
                   blurRadius: 12,
                 ),
               ],
@@ -220,13 +220,13 @@ class _OwnerDevisListViewState extends State<OwnerDevisListView> {
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 colors: [
-                                  statusColor.withOpacity(0.25),
-                                  statusColor.withOpacity(0.12),
+                                  statusColor.withValues(alpha: 0.25),
+                                  statusColor.withValues(alpha: 0.12),
                                 ],
                               ),
                               borderRadius: BorderRadius.circular(20),
                               border: Border.all(
-                                color: statusColor.withOpacity(0.5),
+                                color: statusColor.withValues(alpha: 0.5),
                                 width: 1.5,
                               ),
                             ),
@@ -246,7 +246,7 @@ class _OwnerDevisListViewState extends State<OwnerDevisListView> {
                         'Client: ${devis.clientName.isEmpty ? 'N/A' : devis.clientName}',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Colors.white.withOpacity(0.7),
+                          color: Colors.white.withValues(alpha: 0.7),
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -254,7 +254,7 @@ class _OwnerDevisListViewState extends State<OwnerDevisListView> {
                         'Type: ${_formatTypeDemande(devis.typeDemande)}',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Colors.white.withOpacity(0.7),
+                          color: Colors.white.withValues(alpha: 0.7),
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -262,7 +262,7 @@ class _OwnerDevisListViewState extends State<OwnerDevisListView> {
                         'Objectif: ${_formatObjectif(devis.objectif)}',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Colors.white.withOpacity(0.7),
+                          color: Colors.white.withValues(alpha: 0.7),
                         ),
                       ),
                       const SizedBox(height: 8),
@@ -271,7 +271,7 @@ class _OwnerDevisListViewState extends State<OwnerDevisListView> {
                           Icon(
                             Icons.calendar_today,
                             size: 14,
-                            color: Colors.white.withOpacity(0.4),
+                            color: Colors.white.withValues(alpha: 0.4),
                           ),
                           const SizedBox(width: 4),
                           Text(
@@ -280,7 +280,7 @@ class _OwnerDevisListViewState extends State<OwnerDevisListView> {
                                 : 'Date non spécifiée',
                             style: TextStyle(
                               fontSize: 12,
-                              color: Colors.white.withOpacity(0.4),
+                              color: Colors.white.withValues(alpha: 0.4),
                             ),
                           ),
                         ],

@@ -69,7 +69,7 @@ class SubventionDetailView extends StatelessWidget {
                         'Chargement de la subvention...',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.white.withOpacity(0.7),
+                          color: Colors.white.withValues(alpha: 0.7),
                         ),
                       ),
                     ],
@@ -86,12 +86,12 @@ class SubventionDetailView extends StatelessWidget {
                         height: 80,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: const Color(0xFFffd60a).withOpacity(0.1),
+                          color: const Color(0xFFffd60a).withValues(alpha: 0.1),
                         ),
                         child: Icon(
                           Icons.money,
                           size: 40,
-                          color: const Color(0xFFffd60a).withOpacity(0.6),
+                          color: const Color(0xFFffd60a).withValues(alpha: 0.6),
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -127,13 +127,19 @@ class SubventionDetailView extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    _getStatusColor(subvention.statut ?? '').withOpacity(0.25),
-                    _getStatusColor(subvention.statut ?? '').withOpacity(0.12),
+                    _getStatusColor(
+                      subvention.statut ?? '',
+                    ).withValues(alpha: 0.25),
+                    _getStatusColor(
+                      subvention.statut ?? '',
+                    ).withValues(alpha: 0.12),
                   ],
                 ),
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                  color: _getStatusColor(subvention.statut ?? '').withOpacity(0.5),
+                  color: _getStatusColor(
+                    subvention.statut ?? '',
+                  ).withValues(alpha: 0.5),
                   width: 1.5,
                 ),
               ),
@@ -164,7 +170,7 @@ class SubventionDetailView extends StatelessWidget {
               subvention.descriptionProjet ?? '',
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.white.withOpacity(0.8),
+                color: Colors.white.withValues(alpha: 0.8),
               ),
             ),
             const SizedBox(height: 24),
@@ -185,7 +191,7 @@ class SubventionDetailView extends StatelessWidget {
                     ),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: const Color(0xFFffd60a).withOpacity(0.2),
+                      color: const Color(0xFFffd60a).withValues(alpha: 0.2),
                       width: 1.5,
                     ),
                   ),
@@ -209,7 +215,10 @@ class SubventionDetailView extends StatelessWidget {
                         'Référence Projet',
                         subvention.project?.devis?.reference ?? 'N/A',
                       ),
-                      _buildDetailRow('Nom Projet', subvention.nomProjet ?? 'N/A'),
+                      _buildDetailRow(
+                        'Nom Projet',
+                        subvention.nomProjet ?? 'N/A',
+                      ),
                     ],
                   ),
                 ),
@@ -232,7 +241,7 @@ class SubventionDetailView extends StatelessWidget {
                     ),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: const Color(0xFFffd60a).withOpacity(0.2),
+                      color: const Color(0xFFffd60a).withValues(alpha: 0.2),
                       width: 1.5,
                     ),
                   ),
@@ -254,7 +263,10 @@ class SubventionDetailView extends StatelessWidget {
                         subvention.representant ?? 'N/A',
                       ),
                       _buildDetailRow('Email', subvention.email ?? 'N/A'),
-                      _buildDetailRow('Téléphone', subvention.telephone ?? 'N/A'),
+                      _buildDetailRow(
+                        'Téléphone',
+                        subvention.telephone ?? 'N/A',
+                      ),
                       _buildDetailRow('Adresse', subvention.adresse ?? 'N/A'),
                       _buildDetailRow(
                         'Description du projet',
@@ -313,7 +325,7 @@ class SubventionDetailView extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
-                color: Colors.white.withOpacity(0.7),
+                color: Colors.white.withValues(alpha: 0.7),
               ),
             ),
           ),
@@ -323,7 +335,7 @@ class SubventionDetailView extends StatelessWidget {
               value,
               style: TextStyle(
                 fontSize: 14,
-                color: Colors.white.withOpacity(0.9),
+                color: Colors.white.withValues(alpha: 0.9),
               ),
               textAlign: TextAlign.end,
             ),
@@ -417,7 +429,11 @@ class SubventionDetailView extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
-                    Icon(Icons.attach_money, size: 20, color: Color(0xFF1a1f2e)),
+                    Icon(
+                      Icons.attach_money,
+                      size: 20,
+                      color: Color(0xFF1a1f2e),
+                    ),
                     SizedBox(width: 8),
                     Text(
                       'Marquer comme payé',

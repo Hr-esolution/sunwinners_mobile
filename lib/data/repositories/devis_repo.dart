@@ -12,7 +12,10 @@ class DevisRepository {
   }
 
   /// Client: create a devis with images (multipart)
-  Future<Response> createDevisWithImages(Map<String, dynamic> devisData, List<String>? imagePaths) async {
+  Future<Response> createDevisWithImages(
+    Map<String, dynamic> devisData,
+    List<String>? imagePaths,
+  ) async {
     // Extract non-file fields to send as form data
     Map<String, dynamic> fields = {};
     devisData.forEach((key, value) {
@@ -21,7 +24,11 @@ class DevisRepository {
       }
     });
 
-    return await apiClient.postMultipartData('/devis-solaire', fields, imagePaths);
+    return await apiClient.postMultipartData(
+      '/devis-solaire',
+      fields,
+      imagePaths,
+    );
   }
 
   /// Client: get my devis
@@ -73,7 +80,7 @@ class DevisRepository {
 
   /// Client: see responses for a devis
   Future<Response> getDevisResponses(int devisId) async {
-    return await apiClient.getData('/devis/$devisId/responses');
+    return await apiClient.getData('/client/devis/$devisId/responses');
   }
 
   /// Technician: get specific response for a devis by a technician
@@ -101,5 +108,4 @@ class DevisRepository {
       '/devis/$devisId/remove-technician/$technicianId',
     );
   }
-
 }

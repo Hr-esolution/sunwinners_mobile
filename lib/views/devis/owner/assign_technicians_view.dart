@@ -93,7 +93,7 @@ class _AssignTechniciansPageState extends State<AssignTechniciansPage> {
                       'Chargement des techniciens...',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withValues(alpha: 0.7),
                       ),
                     ),
                   ],
@@ -130,12 +130,12 @@ class _AssignTechniciansPageState extends State<AssignTechniciansPage> {
                       height: 80,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: const Color(0xFFffd60a).withOpacity(0.1),
+                        color: const Color(0xFFffd60a).withValues(alpha: 0.1),
                       ),
                       child: Icon(
                         Icons.engineering,
                         size: 40,
-                        color: const Color(0xFFffd60a).withOpacity(0.6),
+                        color: const Color(0xFFffd60a).withValues(alpha: 0.6),
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -152,7 +152,7 @@ class _AssignTechniciansPageState extends State<AssignTechniciansPage> {
                       'Les techniciens apparaîtront ici',
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.white.withOpacity(0.5),
+                        color: Colors.white.withValues(alpha: 0.5),
                       ),
                     ),
                   ],
@@ -181,7 +181,9 @@ class _AssignTechniciansPageState extends State<AssignTechniciansPage> {
                             ),
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                              color: const Color(0xFFffd60a).withOpacity(0.2),
+                              color: const Color(
+                                0xFFffd60a,
+                              ).withValues(alpha: 0.2),
                               width: 1.5,
                             ),
                           ),
@@ -259,7 +261,7 @@ class _AssignTechniciansPageState extends State<AssignTechniciansPage> {
                                     border: Border.all(
                                       color: const Color(
                                         0xFFffd60a,
-                                      ).withOpacity(0.2),
+                                      ).withValues(alpha: 0.2),
                                       width: 1.5,
                                     ),
                                   ),
@@ -273,28 +275,42 @@ class _AssignTechniciansPageState extends State<AssignTechniciansPage> {
                                           gradient: const LinearGradient(
                                             begin: Alignment.topLeft,
                                             end: Alignment.bottomRight,
-                                            colors: [Color(0xFFffd60a), Color(0xFFffc300)],
+                                            colors: [
+                                              Color(0xFFffd60a),
+                                              Color(0xFFffc300),
+                                            ],
                                           ),
                                           boxShadow: [
                                             BoxShadow(
-                                              color: const Color(0xFFffd60a).withOpacity(0.3),
+                                              color: const Color(
+                                                0xFFffd60a,
+                                              ).withValues(alpha: 0.3),
                                               spreadRadius: 1,
                                               blurRadius: 8,
                                             ),
                                           ],
                                         ),
                                         child: ClipOval(
-                                          child: techObj.logo != null && techObj.logo!.isNotEmpty
+                                          child:
+                                              techObj.logo != null &&
+                                                  techObj.logo!.isNotEmpty
                                               ? Image.network(
                                                   techObj.logo!,
                                                   fit: BoxFit.cover,
-                                                  errorBuilder: (context, error, stackTrace) {
-                                                    return const Icon(
-                                                      Icons.business,
-                                                      size: 20,
-                                                      color: Color(0xFF0f1419),
-                                                    );
-                                                  },
+                                                  errorBuilder:
+                                                      (
+                                                        context,
+                                                        error,
+                                                        stackTrace,
+                                                      ) {
+                                                        return const Icon(
+                                                          Icons.business,
+                                                          size: 20,
+                                                          color: Color(
+                                                            0xFF0f1419,
+                                                          ),
+                                                        );
+                                                      },
                                                 )
                                               : const Icon(
                                                   Icons.business,
@@ -313,7 +329,9 @@ class _AssignTechniciansPageState extends State<AssignTechniciansPage> {
                                       subtitle: Text(
                                         companyName,
                                         style: TextStyle(
-                                          color: Colors.white.withOpacity(0.7),
+                                          color: Colors.white.withValues(
+                                            alpha: 0.7,
+                                          ),
                                           fontSize: 12,
                                         ),
                                       ),
@@ -380,7 +398,7 @@ class _AssignTechniciansPageState extends State<AssignTechniciansPage> {
                                     border: Border.all(
                                       color: const Color(
                                         0xFFffd60a,
-                                      ).withOpacity(0.2),
+                                      ).withValues(alpha: 0.2),
                                       width: 1.5,
                                     ),
                                   ),
@@ -394,11 +412,16 @@ class _AssignTechniciansPageState extends State<AssignTechniciansPage> {
                                           gradient: const LinearGradient(
                                             begin: Alignment.topLeft,
                                             end: Alignment.bottomRight,
-                                            colors: [Color(0xFFffd60a), Color(0xFFffc300)],
+                                            colors: [
+                                              Color(0xFFffd60a),
+                                              Color(0xFFffc300),
+                                            ],
                                           ),
                                           boxShadow: [
                                             BoxShadow(
-                                              color: const Color(0xFFffd60a).withOpacity(0.3),
+                                              color: const Color(
+                                                0xFFffd60a,
+                                              ).withValues(alpha: 0.3),
                                               spreadRadius: 1,
                                               blurRadius: 8,
                                             ),
@@ -420,7 +443,9 @@ class _AssignTechniciansPageState extends State<AssignTechniciansPage> {
                                       subtitle: Text(
                                         companyName,
                                         style: TextStyle(
-                                          color: Colors.white.withOpacity(0.7),
+                                          color: Colors.white.withValues(
+                                            alpha: 0.7,
+                                          ),
                                           fontSize: 12,
                                         ),
                                       ),

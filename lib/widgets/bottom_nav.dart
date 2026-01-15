@@ -38,7 +38,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
           type: BottomNavigationBarType.fixed,
           backgroundColor: const Color(0xFF0f1419),
           selectedItemColor: const Color(0xFFffd60a),
-          unselectedItemColor: Colors.white.withOpacity(0.6),
+          unselectedItemColor: Colors.white.withValues(alpha: 0.6),
           selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
           unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500),
           elevation: 0,
@@ -106,7 +106,10 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
           colors: [Color(0xFF1a1f2e), Color(0xFF0f1419)],
         ),
         border: Border(
-          top: BorderSide(color: Color(0xFFffd60a).withOpacity(0.2), width: 1),
+          top: BorderSide(
+            color: Color(0xFFffd60a).withValues(alpha: 0.2),
+            width: 1,
+          ),
         ),
       ),
       child: SafeArea(
@@ -130,7 +133,7 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
                     padding: EdgeInsets.symmetric(vertical: 8),
                     decoration: BoxDecoration(
                       color: isSelected
-                          ? Color(0xFFffd60a).withOpacity(0.15)
+                          ? Color(0xFFffd60a).withValues(alpha: 0.15)
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -142,7 +145,7 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
                           _getIconByIndex(index),
                           color: isSelected
                               ? Color(0xFFffd60a)
-                              : Colors.white.withOpacity(0.6),
+                              : Colors.white.withValues(alpha: 0.6),
                           size: 24,
                         ),
                         const SizedBox(height: 4),
@@ -152,7 +155,7 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
                             fontSize: 12,
                             color: isSelected
                                 ? Color(0xFFffd60a)
-                                : Colors.white.withOpacity(0.6),
+                                : Colors.white.withValues(alpha: 0.6),
                             fontWeight: isSelected
                                 ? FontWeight.w600
                                 : FontWeight.w400,

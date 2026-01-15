@@ -82,9 +82,12 @@ class _RespondToDevisViewState extends State<RespondToDevisView> {
     final TextEditingController nameController = TextEditingController();
     final TextEditingController referenceController = TextEditingController();
     final TextEditingController unitPriceController = TextEditingController();
-    final TextEditingController manufacturerController = TextEditingController();
-    final TextEditingController warrantyPeriodController = TextEditingController();
-    final TextEditingController certificationsController = TextEditingController();
+    final TextEditingController manufacturerController =
+        TextEditingController();
+    final TextEditingController warrantyPeriodController =
+        TextEditingController();
+    final TextEditingController certificationsController =
+        TextEditingController();
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     await showDialog(
@@ -95,7 +98,7 @@ class _RespondToDevisViewState extends State<RespondToDevisView> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
             side: BorderSide(
-              color: const Color(0xFFffd60a).withOpacity(0.3),
+              color: const Color(0xFFffd60a).withValues(alpha: 0.3),
               width: 1.5,
             ),
           ),
@@ -151,7 +154,9 @@ class _RespondToDevisViewState extends State<RespondToDevisView> {
                   // Prix unitaire
                   TextFormField(
                     controller: unitPriceController,
-                    keyboardType: TextInputType.numberWithOptions(decimal: true),
+                    keyboardType: TextInputType.numberWithOptions(
+                      decimal: true,
+                    ),
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
                         return 'Veuillez entrer un prix unitaire';
@@ -190,7 +195,8 @@ class _RespondToDevisViewState extends State<RespondToDevisView> {
                     decoration: _buildInputDecoration(
                       labelText: 'Période de garantie (mois)',
                       icon: Icons.shield_outlined,
-                      hintText: 'Entrez la période de garantie en mois (optionnel)',
+                      hintText:
+                          'Entrez la période de garantie en mois (optionnel)',
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -217,16 +223,17 @@ class _RespondToDevisViewState extends State<RespondToDevisView> {
                         },
                         child: Text(
                           'Annuler',
-                          style: TextStyle(
-                            color: const Color(0xFFff6b6b),
-                          ),
+                          style: TextStyle(color: const Color(0xFFff6b6b)),
                         ),
                       ),
                       const SizedBox(width: 12),
                       Container(
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
-                            colors: [const Color(0xFFffd60a), const Color(0xFFffc300)],
+                            colors: [
+                              const Color(0xFFffd60a),
+                              const Color(0xFFffc300),
+                            ],
                           ),
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -234,26 +241,41 @@ class _RespondToDevisViewState extends State<RespondToDevisView> {
                           onPressed: () async {
                             if (formKey.currentState!.validate()) {
                               try {
-                                double unitPrice = double.parse(unitPriceController.text.trim());
+                                double unitPrice = double.parse(
+                                  unitPriceController.text.trim(),
+                                );
 
                                 final newComposant = {
                                   'name': nameController.text.trim(),
-                                  'reference': referenceController.text.trim().isNotEmpty
+                                  'reference':
+                                      referenceController.text.trim().isNotEmpty
                                       ? referenceController.text.trim()
                                       : null,
                                   'unit_price': unitPrice,
-                                  'manufacturer': manufacturerController.text.trim().isNotEmpty
+                                  'manufacturer':
+                                      manufacturerController.text
+                                          .trim()
+                                          .isNotEmpty
                                       ? manufacturerController.text.trim()
                                       : null,
-                                  'warranty_period': warrantyPeriodController.text.trim().isNotEmpty
-                                      ? int.tryParse(warrantyPeriodController.text.trim())
+                                  'warranty_period':
+                                      warrantyPeriodController.text
+                                          .trim()
+                                          .isNotEmpty
+                                      ? int.tryParse(
+                                          warrantyPeriodController.text.trim(),
+                                        )
                                       : null,
-                                  'certifications': certificationsController.text.trim().isNotEmpty
+                                  'certifications':
+                                      certificationsController.text
+                                          .trim()
+                                          .isNotEmpty
                                       ? certificationsController.text.trim()
                                       : null,
                                 };
 
-                                await composantController.createComposantFromData(newComposant);
+                                await composantController
+                                    .createComposantFromData(newComposant);
 
                                 await _loadComposants();
 
@@ -305,18 +327,21 @@ class _RespondToDevisViewState extends State<RespondToDevisView> {
       labelText: labelText,
       labelStyle: TextStyle(color: Colors.white, fontSize: 14),
       hintText: hintText,
-      hintStyle: TextStyle(color: Colors.white.withOpacity(0.5), fontSize: 14),
+      hintStyle: TextStyle(
+        color: Colors.white.withValues(alpha: 0.5),
+        fontSize: 14,
+      ),
       prefixIcon: Icon(
         icon,
-        color: const Color(0xFFffd60a).withOpacity(0.6),
+        color: const Color(0xFFffd60a).withValues(alpha: 0.6),
         size: 20,
       ),
       filled: true,
-      fillColor: Colors.white.withOpacity(0.05),
+      fillColor: Colors.white.withValues(alpha: 0.05),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(
-          color: Colors.white.withOpacity(0.1),
+          color: Colors.white.withValues(alpha: 0.1),
           width: 1.5,
         ),
       ),

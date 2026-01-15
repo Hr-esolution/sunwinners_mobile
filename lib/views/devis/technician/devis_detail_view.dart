@@ -99,7 +99,7 @@ class _TechnicianDevisDetailPageState extends State<TechnicianDevisDetailPage> {
                       'Chargement du devis...',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withValues(alpha: 0.7),
                       ),
                     ),
                   ],
@@ -118,12 +118,12 @@ class _TechnicianDevisDetailPageState extends State<TechnicianDevisDetailPage> {
                       height: 80,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: const Color(0xFFffd60a).withOpacity(0.1),
+                        color: const Color(0xFFffd60a).withValues(alpha: 0.1),
                       ),
                       child: Icon(
                         Icons.inbox,
                         size: 40,
-                        color: const Color(0xFFffd60a).withOpacity(0.6),
+                        color: const Color(0xFFffd60a).withValues(alpha: 0.6),
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -178,17 +178,20 @@ class _TechnicianDevisDetailPageState extends State<TechnicianDevisDetailPage> {
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [color.withOpacity(0.15), color.withOpacity(0.05)],
+              colors: [
+                color.withValues(alpha: 0.15),
+                color.withValues(alpha: 0.05),
+              ],
             ),
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: color.withOpacity(0.4), width: 1.5),
+            border: Border.all(color: color.withValues(alpha: 0.4), width: 1.5),
           ),
           child: Row(
             children: [
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.2),
+                  color: color.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Icon(Icons.check_circle, color: color, size: 24),
@@ -202,7 +205,7 @@ class _TechnicianDevisDetailPageState extends State<TechnicianDevisDetailPage> {
                       'Statut du devis',
                       style: TextStyle(
                         fontSize: 13,
-                        color: Colors.white.withOpacity(0.6),
+                        color: Colors.white.withValues(alpha: 0.6),
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -244,7 +247,7 @@ class _TechnicianDevisDetailPageState extends State<TechnicianDevisDetailPage> {
             ),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: const Color(0xFFffd60a).withOpacity(0.2),
+              color: const Color(0xFFffd60a).withValues(alpha: 0.2),
               width: 1.5,
             ),
           ),
@@ -345,13 +348,13 @@ class _TechnicianDevisDetailPageState extends State<TechnicianDevisDetailPage> {
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: const Color(0xFFffd60a).withOpacity(0.2),
+                        color: const Color(0xFFffd60a).withValues(alpha: 0.2),
                         width: 1.5,
                       ),
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
+                          color: Colors.black.withValues(alpha: 0.3),
                           blurRadius: 12,
                           offset: const Offset(0, 4),
                         ),
@@ -364,10 +367,10 @@ class _TechnicianDevisDetailPageState extends State<TechnicianDevisDetailPage> {
                         width: 140,
                         fit: BoxFit.cover,
                         errorBuilder: (_, __, ___) => Container(
-                          color: Colors.grey.withOpacity(0.1),
+                          color: Colors.grey.withValues(alpha: 0.1),
                           child: Icon(
                             Icons.image_not_supported,
-                            color: Colors.white.withOpacity(0.3),
+                            color: Colors.white.withValues(alpha: 0.3),
                             size: 32,
                           ),
                         ),
@@ -614,7 +617,7 @@ class _TechnicianDevisDetailPageState extends State<TechnicianDevisDetailPage> {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
-                color: Colors.white.withOpacity(0.7),
+                color: Colors.white.withValues(alpha: 0.7),
               ),
             ),
           ),
@@ -624,7 +627,7 @@ class _TechnicianDevisDetailPageState extends State<TechnicianDevisDetailPage> {
               value,
               style: TextStyle(
                 fontSize: 14,
-                color: Colors.white.withOpacity(0.9),
+                color: Colors.white.withValues(alpha: 0.9),
               ),
               textAlign: TextAlign.end,
             ),
@@ -636,6 +639,6 @@ class _TechnicianDevisDetailPageState extends State<TechnicianDevisDetailPage> {
 
   Widget _divider() => Padding(
     padding: const EdgeInsets.symmetric(vertical: 4),
-    child: Divider(height: 0, color: Colors.white.withOpacity(0.1)),
+    child: Divider(height: 0, color: Colors.white.withValues(alpha: 0.1)),
   );
 }

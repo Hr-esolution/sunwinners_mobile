@@ -72,7 +72,7 @@ class TechnicianApprovalView extends StatelessWidget {
                       'Chargement des techniciens...',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withValues(alpha: 0.7),
                       ),
                     ),
                   ],
@@ -82,9 +82,7 @@ class TechnicianApprovalView extends StatelessWidget {
 
             // Filter only pending approval technicians based on approved status
             final pendingTechnicians = controller.technicians
-                .where(
-                  (tech) => !tech.approved,
-                )
+                .where((tech) => !tech.approved)
                 .toList();
 
             if (pendingTechnicians.isEmpty) {
@@ -97,12 +95,12 @@ class TechnicianApprovalView extends StatelessWidget {
                       height: 80,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: const Color(0xFFffd60a).withOpacity(0.1),
+                        color: const Color(0xFFffd60a).withValues(alpha: 0.1),
                       ),
                       child: Icon(
                         Icons.check_circle_outline,
                         size: 40,
-                        color: const Color(0xFFffd60a).withOpacity(0.6),
+                        color: const Color(0xFFffd60a).withValues(alpha: 0.6),
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -123,7 +121,10 @@ class TechnicianApprovalView extends StatelessWidget {
             return RefreshIndicator(
               onRefresh: () => controller.loadAllTechnicians(),
               child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
                 itemCount: pendingTechnicians.length,
                 itemBuilder: (context, index) {
                   final technician = pendingTechnicians[index];
@@ -159,7 +160,7 @@ class TechnicianApprovalView extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                color: const Color(0xFFffd60a).withOpacity(0.2),
+                color: const Color(0xFFffd60a).withValues(alpha: 0.2),
                 width: 1.5,
               ),
             ),
@@ -171,10 +172,10 @@ class TechnicianApprovalView extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF00d4ff).withOpacity(0.2),
+                        color: const Color(0xFF00d4ff).withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                          color: const Color(0xFF00d4ff).withOpacity(0.5),
+                          color: const Color(0xFF00d4ff).withValues(alpha: 0.5),
                           width: 1,
                         ),
                       ),
@@ -201,7 +202,7 @@ class TechnicianApprovalView extends StatelessWidget {
                           Text(
                             technician.email,
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.6),
+                              color: Colors.white.withValues(alpha: 0.6),
                               fontSize: 12,
                             ),
                           ),
@@ -216,13 +217,13 @@ class TechnicianApprovalView extends StatelessWidget {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            const Color(0xFFffd60a).withOpacity(0.25),
-                            const Color(0xFFffd60a).withOpacity(0.12),
+                            const Color(0xFFffd60a).withValues(alpha: 0.25),
+                            const Color(0xFFffd60a).withValues(alpha: 0.12),
                           ],
                         ),
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
-                          color: const Color(0xFFffd60a).withOpacity(0.5),
+                          color: const Color(0xFFffd60a).withValues(alpha: 0.5),
                           width: 1.5,
                         ),
                       ),
@@ -239,7 +240,10 @@ class TechnicianApprovalView extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 if (technician.technician?.companyName != null)
-                  _buildInfoRow('Entreprise', technician.technician!.companyName!),
+                  _buildInfoRow(
+                    'Entreprise',
+                    technician.technician!.companyName!,
+                  ),
                 if (technician.technician?.phone != null)
                   _buildInfoRow('Téléphone', technician.technician!.phone!),
                 if (technician.technician?.certificates != null)
@@ -274,14 +278,19 @@ class TechnicianApprovalView extends StatelessWidget {
                           ],
                         ),
                         child: InkWell(
-                          onTap: () => controller.approveTechnician(technician.id),
+                          onTap: () =>
+                              controller.approveTechnician(technician.id),
                           borderRadius: BorderRadius.circular(10),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 14),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
-                                Icon(Icons.check, size: 20, color: Color(0xFF1a1f2e)),
+                                Icon(
+                                  Icons.check,
+                                  size: 20,
+                                  color: Color(0xFF1a1f2e),
+                                ),
                                 SizedBox(width: 8),
                                 Text(
                                   'Approuver',
@@ -315,14 +324,19 @@ class TechnicianApprovalView extends StatelessWidget {
                           ],
                         ),
                         child: InkWell(
-                          onTap: () => controller.rejectTechnician(technician.id),
+                          onTap: () =>
+                              controller.rejectTechnician(technician.id),
                           borderRadius: BorderRadius.circular(10),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 14),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
-                                Icon(Icons.close, size: 20, color: Color(0xFF1a1f2e)),
+                                Icon(
+                                  Icons.close,
+                                  size: 20,
+                                  color: Color(0xFF1a1f2e),
+                                ),
                                 SizedBox(width: 8),
                                 Text(
                                   'Rejeter',
@@ -363,7 +377,7 @@ class TechnicianApprovalView extends StatelessWidget {
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w600,
-                color: Colors.white.withOpacity(0.7),
+                color: Colors.white.withValues(alpha: 0.7),
               ),
             ),
           ),
@@ -373,7 +387,7 @@ class TechnicianApprovalView extends StatelessWidget {
               value,
               style: TextStyle(
                 fontSize: 12,
-                color: Colors.white.withOpacity(0.9),
+                color: Colors.white.withValues(alpha: 0.9),
               ),
               textAlign: TextAlign.end,
             ),

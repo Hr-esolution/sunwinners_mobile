@@ -76,7 +76,9 @@ class OwnerDashboardView extends StatelessWidget {
                           borderRadius: BorderRadius.circular(18),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFF00ff88).withOpacity(0.3),
+                              color: const Color(
+                                0xFF00ff88,
+                              ).withValues(alpha: 0.3),
                               blurRadius: 16,
                               spreadRadius: 0,
                               offset: const Offset(0, 6),
@@ -99,7 +101,7 @@ class OwnerDashboardView extends StatelessWidget {
                                           fontSize: 18,
                                           color: const Color(
                                             0xFF0f1419,
-                                          ).withOpacity(0.9),
+                                          ).withValues(alpha: 0.9),
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),
@@ -121,7 +123,7 @@ class OwnerDashboardView extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     color: const Color(
                                       0xFF0f1419,
-                                    ).withOpacity(0.2),
+                                    ).withValues(alpha: 0.2),
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: const Icon(
@@ -139,7 +141,7 @@ class OwnerDashboardView extends StatelessWidget {
                                 fontSize: 14,
                                 color: const Color(
                                   0xFF0f1419,
-                                ).withOpacity(0.85),
+                                ).withValues(alpha: 0.85),
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -174,13 +176,15 @@ class OwnerDashboardView extends StatelessWidget {
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [
-                                Color(0xFFffd60a).withOpacity(0.2),
-                                Color(0xFFffc300).withOpacity(0.1),
+                                Color(0xFFffd60a).withValues(alpha: 0.2),
+                                Color(0xFFffc300).withValues(alpha: 0.1),
                               ],
                             ),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
-                              color: const Color(0xFFffd60a).withOpacity(0.4),
+                              color: const Color(
+                                0xFFffd60a,
+                              ).withValues(alpha: 0.4),
                               width: 1.5,
                             ),
                           ),
@@ -305,7 +309,9 @@ class OwnerDashboardView extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
-                            color: const Color(0xFFffd60a).withOpacity(0.2),
+                            color: const Color(
+                              0xFFffd60a,
+                            ).withValues(alpha: 0.2),
                             width: 1.5,
                           ),
                         ),
@@ -332,7 +338,7 @@ class OwnerDashboardView extends StatelessWidget {
                                   'Aucune activité récente',
                                   style: TextStyle(
                                     fontSize: 15,
-                                    color: Colors.white.withOpacity(0.8),
+                                    color: Colors.white.withValues(alpha: 0.8),
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -341,7 +347,7 @@ class OwnerDashboardView extends StatelessWidget {
                                   'Vos activités récentes apparaîtront ici',
                                   style: TextStyle(
                                     fontSize: 13,
-                                    color: Colors.white.withOpacity(0.5),
+                                    color: Colors.white.withValues(alpha: 0.5),
                                   ),
                                 ),
                               ],
@@ -383,12 +389,12 @@ class OwnerDashboardView extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: const Color(0xFFffd60a).withOpacity(0.2),
+              color: const Color(0xFFffd60a).withValues(alpha: 0.2),
               width: 1.5,
             ),
             boxShadow: [
               BoxShadow(
-                color: color.withOpacity(0.15),
+                color: color.withValues(alpha: 0.15),
                 blurRadius: 12,
                 offset: const Offset(0, 4),
               ),
@@ -407,7 +413,7 @@ class OwnerDashboardView extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: color.withOpacity(0.15),
+                        color: color.withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(14),
                       ),
                       child: Icon(icon, color: color, size: 28),
@@ -432,7 +438,7 @@ class OwnerDashboardView extends StatelessWidget {
                           subtitle,
                           style: TextStyle(
                             fontSize: 11,
-                            color: Colors.white.withOpacity(0.6),
+                            color: Colors.white.withValues(alpha: 0.6),
                             fontWeight: FontWeight.w500,
                           ),
                           maxLines: 1,
@@ -474,7 +480,7 @@ class SubventionStatsCard extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: const Color(0xFFffd60a).withOpacity(0.2),
+              color: const Color(0xFFffd60a).withValues(alpha: 0.2),
               width: 1.5,
             ),
           ),
@@ -486,10 +492,10 @@ class SubventionStatsCard extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF2ECC71).withOpacity(0.2),
+                      color: const Color(0xFF2ECC71).withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
-                        color: const Color(0xFF2ECC71).withOpacity(0.5),
+                        color: const Color(0xFF2ECC71).withValues(alpha: 0.5),
                         width: 1,
                       ),
                     ),
@@ -514,10 +520,10 @@ class SubventionStatsCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'Suivi des aides gouvernementales',
+                          'Suivi des subventions',
                           style: TextStyle(
                             fontSize: 12,
-                            color: Colors.white.withOpacity(0.7),
+                            color: Colors.white.withValues(alpha: 0.7),
                           ),
                         ),
                       ],
@@ -531,13 +537,13 @@ class SubventionStatsCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          const Color(0xFF2ECC71).withOpacity(0.25),
-                          const Color(0xFF2ECC71).withOpacity(0.12),
+                          const Color(0xFF2ECC71).withValues(alpha: 0.25),
+                          const Color(0xFF2ECC71).withValues(alpha: 0.12),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
-                        color: const Color(0xFF2ECC71).withOpacity(0.5),
+                        color: const Color(0xFF2ECC71).withValues(alpha: 0.5),
                         width: 1.5,
                       ),
                     ),
@@ -559,19 +565,19 @@ class SubventionStatsCard extends StatelessWidget {
                   _buildStatItem(
                     icon: Icons.pending_actions_rounded,
                     label: 'En attente',
-                    value: '5',
+                    value: '0',
                     color: const Color(0xFFFF9800),
                   ),
                   _buildStatItem(
                     icon: Icons.check_circle_rounded,
                     label: 'Confirmées',
-                    value: '12',
+                    value: '0',
                     color: const Color(0xFF4CAF50),
                   ),
                   _buildStatItem(
                     icon: Icons.attach_money_rounded,
-                    label: 'Payées',
-                    value: '8',
+                    label: 'Terminees',
+                    value: '0',
                     color: const Color(0xFF2196F3),
                   ),
                 ],
@@ -593,9 +599,9 @@ class SubventionStatsCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: color.withOpacity(0.1),
+          color: color.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: color.withOpacity(0.3), width: 1),
+          border: Border.all(color: color.withValues(alpha: 0.3), width: 1),
         ),
         child: Column(
           children: [
@@ -614,7 +620,7 @@ class SubventionStatsCard extends StatelessWidget {
               label,
               style: TextStyle(
                 fontSize: 10,
-                color: Colors.white.withOpacity(0.7),
+                color: Colors.white.withValues(alpha: 0.7),
               ),
             ),
           ],

@@ -173,7 +173,8 @@ class _ProfileViewState extends State<ProfileView> {
             ],
             if (user.role == 'technician') ...[
               // Logo section for technician
-              if (user.technician?.logo != null && user.technician!.logo!.isNotEmpty)
+              if (user.technician?.logo != null &&
+                  user.technician!.logo!.isNotEmpty)
                 Container(
                   margin: const EdgeInsets.only(bottom: 12),
                   child: ClipRRect(
@@ -191,12 +192,16 @@ class _ProfileViewState extends State<ProfileView> {
                           ),
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
-                            color: const Color(0xFFffd60a).withValues(alpha: 0.2),
+                            color: const Color(
+                              0xFFffd60a,
+                            ).withValues(alpha: 0.2),
                             width: 1.5,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFffd60a).withValues(alpha: 0.05),
+                              color: const Color(
+                                0xFFffd60a,
+                              ).withValues(alpha: 0.05),
                               blurRadius: 8,
                             ),
                           ],
@@ -223,11 +228,16 @@ class _ProfileViewState extends State<ProfileView> {
                                   gradient: const LinearGradient(
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
-                                    colors: [Color(0xFFffd60a), Color(0xFFffc300)],
+                                    colors: [
+                                      Color(0xFFffd60a),
+                                      Color(0xFFffc300),
+                                    ],
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: const Color(0xFFffd60a).withOpacity(0.3),
+                                      color: const Color(
+                                        0xFFffd60a,
+                                      ).withValues(alpha: 0.3),
                                       spreadRadius: 2,
                                       blurRadius: 10,
                                     ),
@@ -272,12 +282,16 @@ class _ProfileViewState extends State<ProfileView> {
                           ),
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
-                            color: const Color(0xFFffd60a).withValues(alpha: 0.2),
+                            color: const Color(
+                              0xFFffd60a,
+                            ).withValues(alpha: 0.2),
                             width: 1.5,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFffd60a).withValues(alpha: 0.05),
+                              color: const Color(
+                                0xFFffd60a,
+                              ).withValues(alpha: 0.05),
                               blurRadius: 8,
                             ),
                           ],
@@ -304,11 +318,16 @@ class _ProfileViewState extends State<ProfileView> {
                                   gradient: const LinearGradient(
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
-                                    colors: [Color(0xFFffd60a), Color(0xFFffc300)],
+                                    colors: [
+                                      Color(0xFFffd60a),
+                                      Color(0xFFffc300),
+                                    ],
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: const Color(0xFFffd60a).withOpacity(0.3),
+                                      color: const Color(
+                                        0xFFffd60a,
+                                      ).withValues(alpha: 0.3),
                                       spreadRadius: 2,
                                       blurRadius: 10,
                                     ),
@@ -459,7 +478,9 @@ class _ProfileViewState extends State<ProfileView> {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFffd60a).withValues(alpha: 0.05),
+                            color: const Color(
+                              0xFFffd60a,
+                            ).withValues(alpha: 0.05),
                             blurRadius: 8,
                           ),
                         ],
@@ -488,11 +509,16 @@ class _ProfileViewState extends State<ProfileView> {
                                   gradient: const LinearGradient(
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
-                                    colors: [Color(0xFFffd60a), Color(0xFFffc300)],
+                                    colors: [
+                                      Color(0xFFffd60a),
+                                      Color(0xFFffc300),
+                                    ],
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: const Color(0xFFffd60a).withOpacity(0.3),
+                                      color: const Color(
+                                        0xFFffd60a,
+                                      ).withValues(alpha: 0.3),
                                       spreadRadius: 2,
                                       blurRadius: 10,
                                     ),
@@ -501,18 +527,21 @@ class _ProfileViewState extends State<ProfileView> {
                                 child: Stack(
                                   fit: StackFit.expand,
                                   children: [
-                                    if (user.technician?.logo != null && user.technician!.logo!.isNotEmpty && _selectedImagePath == null)
+                                    if (user.technician?.logo != null &&
+                                        user.technician!.logo!.isNotEmpty &&
+                                        _selectedImagePath == null)
                                       ClipOval(
                                         child: Image.network(
                                           user.technician!.logo!,
                                           fit: BoxFit.cover,
-                                          errorBuilder: (context, error, stackTrace) {
-                                            return const Icon(
-                                              Icons.business,
-                                              size: 40,
-                                              color: Color(0xFF0f1419),
-                                            );
-                                          },
+                                          errorBuilder:
+                                              (context, error, stackTrace) {
+                                                return const Icon(
+                                                  Icons.business,
+                                                  size: 40,
+                                                  color: Color(0xFF0f1419),
+                                                );
+                                              },
                                         ),
                                       )
                                     else if (_selectedImagePath != null)
@@ -531,7 +560,9 @@ class _ProfileViewState extends State<ProfileView> {
                                     Container(
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
-                                        color: Colors.black.withOpacity(0.5),
+                                        color: Colors.black.withValues(
+                                          alpha: 0.5,
+                                        ),
                                       ),
                                       child: const Icon(
                                         Icons.add_a_photo,
@@ -741,7 +772,7 @@ class _ProfileViewState extends State<ProfileView> {
                           Container(
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: Colors.black.withOpacity(0.5),
+                              color: Colors.black.withValues(alpha: 0.5),
                             ),
                             child: const Icon(
                               Icons.add_a_photo,

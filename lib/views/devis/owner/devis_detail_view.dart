@@ -95,7 +95,7 @@ class _OwnerDevisDetailPageState extends State<OwnerDevisDetailPage> {
                       'Chargement du devis...',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withValues(alpha: 0.7),
                       ),
                     ),
                   ],
@@ -113,12 +113,12 @@ class _OwnerDevisDetailPageState extends State<OwnerDevisDetailPage> {
                       height: 80,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: const Color(0xFFffd60a).withOpacity(0.1),
+                        color: const Color(0xFFffd60a).withValues(alpha: 0.1),
                       ),
                       child: Icon(
                         Icons.inbox,
                         size: 40,
-                        color: const Color(0xFFffd60a).withOpacity(0.6),
+                        color: const Color(0xFFffd60a).withValues(alpha: 0.6),
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -178,7 +178,7 @@ class _OwnerDevisDetailPageState extends State<OwnerDevisDetailPage> {
             ),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: const Color(0xFFffd60a).withOpacity(0.2),
+              color: const Color(0xFFffd60a).withValues(alpha: 0.2),
               width: 1.5,
             ),
           ),
@@ -215,15 +215,12 @@ class _OwnerDevisDetailPageState extends State<OwnerDevisDetailPage> {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            color.withOpacity(0.25),
-            color.withOpacity(0.12),
+            color.withValues(alpha: 0.25),
+            color.withValues(alpha: 0.12),
           ],
         ),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: color.withOpacity(0.5),
-          width: 1.5,
-        ),
+        border: Border.all(color: color.withValues(alpha: 0.5), width: 1.5),
       ),
       child: Text(
         label,
@@ -249,7 +246,7 @@ class _OwnerDevisDetailPageState extends State<OwnerDevisDetailPage> {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              color: Colors.white.withOpacity(0.7),
+              color: Colors.white.withValues(alpha: 0.7),
             ),
           ),
         ),
@@ -259,7 +256,7 @@ class _OwnerDevisDetailPageState extends State<OwnerDevisDetailPage> {
             value,
             style: TextStyle(
               fontSize: 14,
-              color: Colors.white.withOpacity(0.9),
+              color: Colors.white.withValues(alpha: 0.9),
             ),
             textAlign: TextAlign.end,
           ),
@@ -286,9 +283,11 @@ class _OwnerDevisDetailPageState extends State<OwnerDevisDetailPage> {
           const Color(0xFF95A5A6),
           status
               .split('_')
-              .map((word) => word.isNotEmpty
-                  ? word[0].toUpperCase() + word.substring(1)
-                  : word)
+              .map(
+                (word) => word.isNotEmpty
+                    ? word[0].toUpperCase() + word.substring(1)
+                    : word,
+              )
               .join(' '),
         );
     }
@@ -318,7 +317,7 @@ class _OwnerDevisDetailPageState extends State<OwnerDevisDetailPage> {
               ),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                color: const Color(0xFFffd60a).withOpacity(0.2),
+                color: const Color(0xFFffd60a).withValues(alpha: 0.2),
                 width: 1.5,
               ),
             ),
@@ -337,7 +336,7 @@ class _OwnerDevisDetailPageState extends State<OwnerDevisDetailPage> {
                 Text(
                   "Aucun technicien assigné à ce devis",
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.6),
+                    color: Colors.white.withValues(alpha: 0.6),
                     fontStyle: FontStyle.italic,
                   ),
                 ),
@@ -364,7 +363,7 @@ class _OwnerDevisDetailPageState extends State<OwnerDevisDetailPage> {
             ),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: const Color(0xFFffd60a).withOpacity(0.2),
+              color: const Color(0xFFffd60a).withValues(alpha: 0.2),
               width: 1.5,
             ),
           ),
@@ -400,15 +399,23 @@ class _OwnerDevisDetailPageState extends State<OwnerDevisDetailPage> {
                       ),
                       child: InkWell(
                         onTap: () async {
-                          final result = await Get.toNamed('/owner/devis/assign-technicians', arguments: widget.devisId);
+                          final result = await Get.toNamed(
+                            '/owner/devis/assign-technicians',
+                            arguments: widget.devisId,
+                          );
                           // Refresh the devis data after returning from assignment
                           if (result == true) {
-                            await devisController.loadDevisDetail(widget.devisId);
+                            await devisController.loadDevisDetail(
+                              widget.devisId,
+                            );
                           }
                         },
                         borderRadius: BorderRadius.circular(10),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
                           child: Text(
                             "Modifier",
                             style: const TextStyle(
@@ -428,7 +435,11 @@ class _OwnerDevisDetailPageState extends State<OwnerDevisDetailPage> {
                   padding: const EdgeInsets.symmetric(vertical: 4),
                   child: Row(
                     children: [
-                      Icon(Icons.engineering, size: 18, color: const Color(0xFF00d4ff)),
+                      Icon(
+                        Icons.engineering,
+                        size: 18,
+                        color: const Color(0xFF00d4ff),
+                      ),
                       const SizedBox(width: 8),
                       Expanded(
                         child: Column(
@@ -441,12 +452,13 @@ class _OwnerDevisDetailPageState extends State<OwnerDevisDetailPage> {
                                 color: Colors.white,
                               ),
                             ),
-                            if (technician.companyName != null && technician.companyName!.isNotEmpty)
+                            if (technician.companyName != null &&
+                                technician.companyName!.isNotEmpty)
                               Text(
                                 technician.companyName!,
                                 style: TextStyle(
                                   fontSize: 12,
-                                  color: Colors.white.withOpacity(0.7),
+                                  color: Colors.white.withValues(alpha: 0.7),
                                 ),
                               ),
                           ],
@@ -484,7 +496,10 @@ class _OwnerDevisDetailPageState extends State<OwnerDevisDetailPage> {
         ),
         child: InkWell(
           onTap: () async {
-            final result = await Get.toNamed('/owner/devis/assign-technicians', arguments: widget.devisId);
+            final result = await Get.toNamed(
+              '/owner/devis/assign-technicians',
+              arguments: widget.devisId,
+            );
             // Refresh the devis data after returning from assignment
             if (result == true) {
               await devisController.loadDevisDetail(widget.devisId);
@@ -513,5 +528,4 @@ class _OwnerDevisDetailPageState extends State<OwnerDevisDetailPage> {
       ),
     );
   }
-
 }

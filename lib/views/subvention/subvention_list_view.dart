@@ -69,7 +69,7 @@ class SubventionListView extends StatelessWidget {
                         'Chargement des subventions...',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.white.withOpacity(0.7),
+                          color: Colors.white.withValues(alpha: 0.7),
                         ),
                       ),
                     ],
@@ -85,12 +85,12 @@ class SubventionListView extends StatelessWidget {
                         height: 80,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: const Color(0xFFffd60a).withOpacity(0.1),
+                          color: const Color(0xFFffd60a).withValues(alpha: 0.1),
                         ),
                         child: Icon(
                           Icons.money,
                           size: 40,
-                          color: const Color(0xFFffd60a).withOpacity(0.6),
+                          color: const Color(0xFFffd60a).withValues(alpha: 0.6),
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -107,7 +107,7 @@ class SubventionListView extends StatelessWidget {
                         'Les subventions apparaîtront ici',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Colors.white.withOpacity(0.5),
+                          color: Colors.white.withValues(alpha: 0.5),
                         ),
                       ),
                     ],
@@ -143,7 +143,7 @@ class SubventionListView extends StatelessWidget {
                     ),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: const Color(0xFFffd60a).withOpacity(0.2),
+                      color: const Color(0xFFffd60a).withValues(alpha: 0.2),
                       width: 1.5,
                     ),
                   ),
@@ -166,12 +166,12 @@ class SubventionListView extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color: _getStatusColor(
                                   subvention.statut ?? 'en_attente',
-                                ).withOpacity(0.2),
+                                ).withValues(alpha: 0.2),
                                 borderRadius: BorderRadius.circular(8),
                                 border: Border.all(
                                   color: _getStatusColor(
                                     subvention.statut ?? 'en_attente',
-                                  ).withOpacity(0.5),
+                                  ).withValues(alpha: 0.5),
                                   width: 1,
                                 ),
                               ),
@@ -210,7 +210,7 @@ class SubventionListView extends StatelessWidget {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            color: Colors.white.withOpacity(0.7),
+                            color: Colors.white.withValues(alpha: 0.7),
                           ),
                         ),
                         const SizedBox(height: 8),
@@ -242,7 +242,7 @@ class SubventionListView extends StatelessWidget {
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                  color: Colors.white.withOpacity(0.7),
+                                  color: Colors.white.withValues(alpha: 0.7),
                                 ),
                               ),
                             ),
